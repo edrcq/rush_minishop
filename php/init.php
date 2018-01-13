@@ -17,7 +17,7 @@ $objectsPath = __DIR__ . '/objects';
 $objectsDir = opendir($objectsPath);
 
 while (($filename = readdir($objectsDir)) !== false) {
-    require_once($filename);
+    require_once($objectsPath.'/'.$filename);
 }
 
 /* Loading Managers */
@@ -25,7 +25,7 @@ $managersPath = __DIR__ . '/managers';
 $managersDir = opendir($managersPath);
 
 while (($filename = readdir($managersDir)) !== false) {
-    require_once($filename);
+    require_once($managersPath.'/'.$filename);
 }
 
 $UserManager = new UserManager($db);
