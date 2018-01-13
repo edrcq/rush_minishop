@@ -46,7 +46,9 @@ class User {
         return json_decode($this->data['data']);
     }
 
-
+    public function debug() {
+        return $this->data;
+    }
     
     public function UserRole() {
         if($this->type == 0) return "Banni";
