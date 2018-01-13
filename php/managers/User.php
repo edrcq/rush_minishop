@@ -42,7 +42,9 @@ class UserManager {
             $q->execute();
             $userData = $q->fetch();
             $user = new User;
-            $user->hydrate($userData);
+            if ($userData !== false) {
+                $user->hydrate($userData);
+            }
             return ($user);
         }
         return (false);
@@ -55,7 +57,9 @@ class UserManager {
         $q->execute();
         $userData = $q->fetch();
         $user = new User;
-        $user->hydrate($userData);
+        if ($userData !== false) {
+            $user->hydrate($userData);
+        }
         return $user;
     }
 
