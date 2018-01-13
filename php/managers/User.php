@@ -18,7 +18,7 @@ class UserManager {
         $q->bindValue(':password',$account->password);
         $q->bindValue(':email',$account->email);
         $q->bindValue(':role',$account->role);
-        $q->bindValue(':data',$account->data);
+        $q->bindValue(':jsondata',$account->jsondata);
 
         $q->execute();
 
@@ -76,13 +76,13 @@ class UserManager {
     }
 
     public function update(User $account) {
-        $q = $this->_db->prepare('UPDATE accounts SET password = :password, email = :email, email = :email, role = :role, data = :data WHERE id = :id');
+        $q = $this->_db->prepare('UPDATE accounts SET password = :password, email = :email, email = :email, role = :role, jsondata = :jsondata WHERE id = :id');
 
         $q->bindValue(':id',$account->id);
         $q->bindValue(':password',$account->password);
         $q->bindValue(':email',$account->email);
         $q->bindValue(':role',$account->role);
-        $q->bindValue(':data',$account->data);
+        $q->bindValue(':jsondata',$account->jsondata);
 
         $q->execute();
         return (true);

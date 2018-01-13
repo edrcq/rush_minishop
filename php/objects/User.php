@@ -8,7 +8,7 @@ class User {
         "password" => "",
         "role" => "",
         "registration_date" => "",
-        "data" => ""
+        "jsondata" => ""
     );
     
     public function __set($name, $value)
