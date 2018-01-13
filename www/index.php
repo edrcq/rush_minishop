@@ -27,7 +27,7 @@ if(isset($_GET)) {
 }
 
 if(isset($page) && in_array($page,$pages)) {
-    $page_now = ucfirst($page);
+    $pageTitle = ucfirst($page);
     require_once(__DIR__ . '/../php/inc/header.php');
     require_once(__DIR__ . '/../php/inc/menu.php');
     require_once(__DIR__ . '/../php/pages/'.$page.'.php');
