@@ -13,7 +13,7 @@ class ProductManager {
 
     // Adds a product
     public function add(User $account) {
-        $q = $this->_db->prepare('INSERT INTO products SET name = :name, color = :color, stock = :stock, description = :description, category = :category, jsondata = :jsondata');
+        $q = $this->_db->prepare('INSERT INTO products SET name = :name, color = :color, price = :price, stock = :stock, description = :description, category = :category, jsondata = :jsondata');
 
         $q->bindValue(':name',$account->name);
         $q->bindValue(':color',$account->color);
@@ -179,7 +179,7 @@ class ProductManager {
 	}
 
     public function update(Product $product) {
-        $q = $this->_db->prepare('UPDATE product SET name = :name, color = :color, stock = :stock, description = :description, category = :category, jsondata = :jsondata WHERE id = :id');
+        $q = $this->_db->prepare('UPDATE product SET name = :name, color = :color, price = :price, stock = :stock, description = :description, category = :category, jsondata = :jsondata WHERE id = :id');
 
         $q->bindValue(':id',$product->id);
         $q->bindValue(':name',$product->name);

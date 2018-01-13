@@ -6,7 +6,8 @@ class Product {
         "id" => "",
 		"name" => "",
         "color" => "",
-		"stock" => "",
+        "stock" => "",
+        "price" => "",
 		"description" => "",
 		"category" => "",
 		"jsondata" => ""

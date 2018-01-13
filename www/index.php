@@ -2,14 +2,11 @@
 
 require_once(__DIR__ . '/../php/init.php');
 
+$connected = false;
+
 if(!empty($_SESSION['connected'])) {
 	$connected = true;
-    //$user = $UserManager->get($_SESSION['user']);
-    //$userMoney = $UserMoneyManager->get($_SESSION['user']);
-    //$seed = $SeedManager->get($_SESSION['user']);
-}
-else {
-	$connected = false;
+    $user = $UserManager->get($_SESSION['user']);
 }
 
 // TODO
