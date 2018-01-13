@@ -13,7 +13,7 @@ class ProductManager {
 
     // Adds a product
     public function add(User $account) {
-        $q = $this->_db->prepare('INSERT INTO products SET name = :name, color = :color, price = :price, stock = :stock, description = :description, category = :category, jsondata = :jsondata');
+        $q = $this->_db->prepare('INSERT INTO products SET name = :name, color = :color, price = :price, img = :img, stock = :stock, description = :description, category = :category, jsondata = :jsondata');
 
         $q->bindValue(':name',$account->name);
         $q->bindValue(':color',$account->color);
@@ -106,7 +106,6 @@ class ProductManager {
 		$data = $q->fetchAll(PDO::FETCH_ASSOC);
 		$products = [];
 		foreach ($data as $prd) {
-			
 			$prod = new Product;
 			$prod->hydrate($prd);
 			$products[] = $prod;
@@ -187,14 +186,15 @@ class ProductManager {
 	}
 
     public function update(Product $product) {
-        $q = $this->_db->prepare('UPDATE product SET name = :name, color = :color, price = :price, stock = :stock, description = :description, category = :category, jsondata = :jsondata WHERE id = :id');
+        $q = $this->_db->prepare('UPDATE product SET name = :name, color = :color, price = :price, img = :img, stock = :stock, description = :description, category = :category, jsondata = :jsondata WHERE id = :id');
 
         $q->bindValue(':id',$product->id);
         $q->bindValue(':name',$product->name);
         $q->bindValue(':color',$product->color);
         $q->bindValue(':stock',$product->stock);
         $q->bindValue(':description',$product->description);
-        $q->bindValue(':category',$product->category);
+		$q->bindValue(':category',$product->category);
+		$q->bindValue(':img',$product->img);
         $q->bindValue(':jsondata',$product->jsondata);
 
         $q->execute();
