@@ -12,11 +12,6 @@ else {
 	$connected = false;
 }
 
-if(!$connected) {
-	header('Location: ?p=login');
-	die();
-}
-
 // TODO
 if(isset($_GET)) {
 	if(!empty($_GET['p'])) {
