@@ -1,0 +1,22 @@
+.top
+{
+	margin: 0;
+	padding: 0;
+	position: relative;
+	height: 80px;
+}
+.top #text
+{
+	position: absolute;
+	top: 25px;
+	left: 20px;
+}
+.top hr
+{
+	position: absolute;
+	bottom: 10px;
+	width: 600px;
+	border-top: 1px solid #000000;
+	border-bottom: 1px solid #000000;
+	color: #000000;
+}
