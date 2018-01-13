@@ -65,14 +65,14 @@ class UserManager {
 
     public function getAll() {
         $q = $this->_db->query('SELECT * FROM accounts');
-        $data = $q->fetchAll();
+        $data = $q->fetchAll(PDO::FETCH_ASSOC);
         return ($data);
     }
 
     // 
     public function getCount() {
         $q = $this->_db->query('SELECT count(id) FROM accounts');
-        return $q->fetch()[0];
+        return $q->fetch(PDO::FETCH_ASSOC)[0];
     }
 
     public function update(User $account) {

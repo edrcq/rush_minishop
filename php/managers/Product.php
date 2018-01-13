@@ -42,7 +42,7 @@ class ProductManager {
             $q = $this->_db->prepare('SELECT * FROM products WHERE id = :id');
             $q->bindValue(':id',$id);
             $q->execute();
-            $productData = $q->fetch();
+            $productData = $q->fetch(PDO::FETCH_ASSOC);
             $product = new Product;
             $product->hydrate($productData);
             return ($product);
@@ -57,7 +57,7 @@ class ProductManager {
         $q = $this->_db->prepare('SELECT * FROM products WHERE color = :color');
         $q->bindValue(':color',$color);
         $q->execute();
-        $products = $q->fetchAll();
+        $products = $q->fetchAll(PDO::FETCH_ASSOC);
 		while ($products[++$idx])
 		{
       	  $product = new Product;
@@ -75,7 +75,7 @@ class ProductManager {
         $q = $this->_db->prepare('SELECT * FROM products WHERE category = :category');
         $q->bindValue(':category',$category);
         $q->execute();
-        $products = $q->fetchAll();
+        $products = $q->fetchAll(PDO::FETCH_ASSOC);
 		while ($products[++$idx])
 		{
       	  $product = new Product;
@@ -91,7 +91,7 @@ class ProductManager {
         $q = $this->_db->prepare('SELECT * FROM products WHERE name = :name');
         $q->bindValue(':name',$name);
         $q->execute();
-        $products = $q->fetchAll();
+        $products = $q->fetchAll(PDO::FETCH_ASSOC);
 		while ($products[++$idx])
 		{
       	  $product = new Product;
@@ -103,7 +103,7 @@ class ProductManager {
     public function getAll() {
 		$q = $this->_db->prepare('SELECT * FROM products');
 		$q->execute();
-		$data = $q->fetchAll();
+		$data = $q->fetchAll(PDO::FETCH_ASSOC);
 		$products = [];
 		foreach ($data as $prd) {
 			$prod = new Product;
@@ -135,7 +135,7 @@ class ProductManager {
 		}
 		$q = $this->_db->prepare($sq);
 		$q->execute();
-		$products = $q->fetchAll();
+		$products = $q->fetchAll(PDO::FETCH_ASSOC);
 		$idx = -1;
 		while ($products[++$idx])
 		{
@@ -166,7 +166,7 @@ class ProductManager {
 		$sq = trim($sq, ',');
 		$q = $this->_db->prepare($sq);
 		$q->execute();
-		$products = $q->fetchAll();
+		$products = $q->fetchAll(PDO::FETCH_ASSOC);
 		$idx = -1;
 		while ($products[++$idx])
 		{
