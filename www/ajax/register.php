@@ -29,7 +29,7 @@ if (isset($_POST['email']) && isset($_POST['password']) && isset($_POST['rpasswo
     $id = $UserManager->add($user);
 
     if ($id > 0)
-        $_SESSION['register'] = ['from' => 'register', 'message' => 'Thanks for your registration! ' . strval($user_exist->id)];
+        $_SESSION['register'] = ['from' => 'register', 'message' => 'Thanks for your registration! '];
     else
         $_SESSION['error'] = ['from' => 'register', 'message' => 'Problem for add you in database, re-try or contact an administrator'];
     header('Location: ../index.php?p=register');
