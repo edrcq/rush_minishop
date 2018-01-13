@@ -72,7 +72,7 @@ class UserManager {
     }
 
     public function update(User $account) {
-        $q = $this->_db->prepare('UPDATE accounts SET username = :username, password = :password, email = :email, user_id = :user_id, email = :email, type = :type, banned = :banned, ban_reason = :ban_reason, surname = :surname WHERE uid = :uid');
+        $q = $this->_db->prepare('UPDATE accounts SET password = :password, email = :email, email = :email, role = :role, data = :data WHERE id = :id');
 
         $q->bindValue(':id',$account->id);
         $q->bindValue(':password',$account->password);
