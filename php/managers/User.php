@@ -40,7 +40,7 @@ class UserManager {
             $q = $this->_db->prepare('SELECT * FROM accounts WHERE id = :id');
             $q->bindValue(':id',$id);
             $q->execute();
-            $userData = $q->fetch();
+            $userData = $q->fetch(PDO::FETCH_ASSOC);
             $user = new User;
             if ($userData !== false) {
                 $user->hydrate($userData);
@@ -55,7 +55,7 @@ class UserManager {
         $q = $this->_db->prepare('SELECT * FROM accounts WHERE email = :email');
         $q->bindValue(':email',$email);
         $q->execute();
-        $userData = $q->fetch();
+        $userData = $q->fetch(PDO::FETCH_ASSOC);
         $user = new User;
         if ($userData !== false) {
             $user->hydrate($userData);
