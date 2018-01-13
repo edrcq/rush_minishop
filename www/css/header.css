@@ -1,0 +1,24 @@
+.top
+{
+	margin: 0;
+	padding: 0;
+	position: relative;
+	height: 80px;
+	border-bottom: 3px solid #000000;
+}
+.top #text
+{
+	position: absolute;
+	font-size: 180%;
+	top: 15px;
+	left: 10px;
+}
+.top hr
+{
+	position: absolute;
+	bottom: 10px;
+	width: 600px;
+	border-top: 1px solid #000000;
+	border-bottom: 1px solid #000000;
+	color: #000000;
+}

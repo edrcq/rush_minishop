@@ -1,0 +1,16 @@
+.footer
+{
+	width: 100%;
+	position: absolute;
+	bottom: 0;
+}
+.footer hr
+{
+	position: relative;
+	color: #FF7700;
+}
+.footer #text
+{
+	font-family: Arial;
+	font-style: italic;
+}

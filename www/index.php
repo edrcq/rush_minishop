@@ -12,11 +12,6 @@ else {
 	$connected = false;
 }
 
-if(!$connected) {
-	header('Location: ?p=login');
-	die();
-}
-
 // TODO
 if(isset($_GET)) {
 	if(!empty($_GET['p'])) {
@@ -38,7 +33,7 @@ if(isset($_GET)) {
 //     require_once(__DIR__ . '/../php/pages/'.$page.'.php');
 // }
 else {
-    require_once('404.html');
+    require_once('404.php');
 }
 
 

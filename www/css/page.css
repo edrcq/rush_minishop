@@ -1,0 +1,36 @@
+.homepage
+{
+	position: relative;
+	margin-top: 30px;
+	margin-bottom: 30px;
+	font-family: Futura, Arial;
+}
+.homepage #text
+{
+	text-align: center;
+	font-size: 300%;
+}
+.homepage #showcase
+{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin: auto;
+}
+.homepage #showcase .item img
+{
+	background: none;
+	margin-right: 100px;
+	margin-left: 100px;
+	max-height: 400px;
+	max-width: 400px;
+}
+.homepage hr
+{
+	margin: auto;
+	margin-top: 70px;
+	margin-bottom: 70px;
+	width: 85%;
+	border-top: 3px solid #000000;
+	border-bottom: 3px solid #000000;
+}
