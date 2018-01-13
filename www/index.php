@@ -9,6 +9,10 @@ if(!empty($_SESSION['connected'])) {
     $user = $UserManager->get($_SESSION['user']);
 }
 
+if (isset($_SESSION['admin']) && $_SESSION['admin'] === true) {
+    $isAdmin = true;
+}
+
 // TODO
 if(isset($_GET)) {
 	if(!empty($_GET['p'])) {

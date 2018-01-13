@@ -36,4 +36,9 @@
         }
         ?>
     </div>
+    <?php 
+        if ($isAdmin === true) {
+            echo '<button class="btn">Ajouter un produit</button>';
+        }
+    ?>
 </div>
