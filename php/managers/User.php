@@ -13,7 +13,7 @@ class UserManager {
 
     // Ajouter un utilisateur
     public function add(User $account) {
-        $q = $this->_db->prepare('INSERT INTO accounts SET password = :password, email = :email, role = :role, registration_date = NOW(), data = :data');
+        $q = $this->_db->prepare('INSERT INTO accounts SET password = :password, email = :email, role = :role, registration_date = NOW(), jsondata = :jsondata');
 
         $q->bindValue(':password',$account->password);
         $q->bindValue(':email',$account->email);
