@@ -16,7 +16,7 @@ if (isset($_POST['email']) && isset($_POST['password']) && isset($_POST['rpasswo
     }
     $user = new User;
     $user->email = $_POST['email'];
-    $user->password = $_POST['password'];
+    $user->password = hash('sha512', $_POST['password']);
     $user->role = 1;
 
     $id = $UserManager->add($user);
