@@ -1,7 +1,7 @@
 <div id="menu">
     <ul>
         <li><a href="?p=home">Home</a></li>
-        <li>Our products :<ul>
+        <li><a href="?p=products">All Products</a><ul>
     <?php 
         foreach ($categories as $category) {
             echo '<li><a href="?p=products&category='. $category['key'] .'">'. $category['name'] .'</a></li>';

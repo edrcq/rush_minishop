@@ -26,6 +26,7 @@
     <br />
     <div class="product-list">
         <?php 
+        var_dump($products);
         foreach ($products as $product) {
             ?>
             <div class="product">
