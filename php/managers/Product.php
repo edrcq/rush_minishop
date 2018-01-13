@@ -75,13 +75,11 @@ class ProductManager {
         $q->bindValue(':category',$category);
         $q->execute();
 		$data = $q->fetchAll(PDO::FETCH_ASSOC);
-		var_dump($data);
 		foreach ($data as $prd) {
 			$prod = new Product;
 			$prod->hydrate($prd);
 			$products[] = $prod;
 		}
-		var_dump($products);
         return ($products);
     }
 
