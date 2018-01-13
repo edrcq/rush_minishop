@@ -13,14 +13,16 @@ include_once('conf/db.php');
 $pages = ['login', 'home', 'products'];
 
 /* Loading Objects */
-$objectsDir = opendir(__DIR__ . '/objects');
+$objectsPath = __DIR__ . '/objects';
+$objectsDir = opendir($objectsPath);
 
 while (($filename = readdir($objectsDir)) !== false) {
     require_once($filename);
 }
 
 /* Loading Managers */
-$managersDir = opendir(__DIR__ . '/managers');
+$managersPath = __DIR__ . '/managers';
+$managersDir = opendir($managersPath);
 
 while (($filename = readdir($managersDir)) !== false) {
     require_once($filename);
