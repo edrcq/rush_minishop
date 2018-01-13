@@ -109,7 +109,7 @@ class ProductManager {
 			$prod = new Product;
 			$products[] = $prod->hydrate($prd);
 		}
-		file_put_contents('/tmp/prod.data', json_encode($data));
+		file_put_contents('/tmp/prod.data', json_encode($products));
         return ($products);
     }
 
