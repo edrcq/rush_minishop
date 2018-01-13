@@ -2,7 +2,7 @@
 
 $settings = json_decode(file_get_contents(__DIR__ . "/conf/settings.json"), true);
 $categories = json_decode(file_get_contents(__DIR__ . "/conf/categories.json"), true);
-var_dump($settings);
+
 /* Load $db
  * A instance of PDO for reach the mysql database
  * Config : php/conf/settings.json
