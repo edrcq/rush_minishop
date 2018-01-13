@@ -39,15 +39,11 @@ class User {
     }
 
     public function setData($data) {
-        $this->data['data'] = json_encode($data);
+        $this->data['jsondata'] = json_encode($data);
     }
 
     public function getData($data) {
-        return json_decode($this->data['data']);
-    }
-
-    public function debug() {
-        return $this->data;
+        return json_decode($this->data['jsondata']);
     }
     
     public function UserRole() {
