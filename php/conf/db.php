@@ -1,14 +1,8 @@
 <?php
 
-$db['user'] = "minishop_ec";
-$db['pass'] = "Hil741Uvwy59csH1";
-$db['host'] = "127.0.0.1";
-$db['base'] = "minishop_ec";
-$db['port'] = 3306;
-
 try
 {
-    $bdd = new PDO('mysql:host='.$db['host'].';port='.$db['port'].';dbname='.$db['base'].';charset=utf8', $db['user'], $db['pass']);
+    $db = new PDO('mysql:host='.$settings['db']['host'].';port='.$settings['db']['port'].';dbname='.$settings['db']['base'].';charset=utf8', $settings['db']['user'], $settings['db']['pass']);
 }
 catch (Exception $e)
 {
