@@ -14,18 +14,20 @@ $pages = ['login', 'home', 'products'];
 
 /* Loading Objects */
 $objectsPath = __DIR__ . '/objects';
-$objectsDir = opendir($objectsPath);
-
-while (($filename = readdir($objectsDir)) !== false) {
-    require_once($objectsPath.'/'.$filename);
+foreach (scandir($objectsPath) as $filename) {
+    $path = $objectsPath . '/' . $filename;
+    if (is_file($path)) {
+        require $path;
+    }
 }
 
 /* Loading Managers */
 $managersPath = __DIR__ . '/managers';
-$managersDir = opendir($managersPath);
-
-while (($filename = readdir($managersDir)) !== false) {
-    require_once($managersPath.'/'.$filename);
+foreach (scandir($managersPath) as $filename) {
+    $path = $managersPath . '/' . $filename;
+    if (is_file($path)) {
+        require $path;
+    }
 }
 
 $UserManager = new UserManager($db);
