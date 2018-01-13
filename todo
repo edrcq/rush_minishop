@@ -1,0 +1,25 @@
+1)
+php/pages/admin_products.php 
+Front ->
+- Formulaire ajouter un produit 
+- Tableau lister les produits (dont une colonne avec un bouton supprimer le produit) 
+
+Back -> 
+- Gestion du formulaire via un fichier php, header location dans tous les cas (voir www/ajax/login et register) 
+
+
+
+2)
+php/pages/admin_categories.php 
+- Formulaire ajouter une category
+- Tableau lister les category (dont une colonne avec un bouton supprimer la category)
+
+Back -> 
+- A faire main, file_put_contents et file_get_contents de php/conf/categories.json (ATTENTION json_encode et json_decode, voir php/init.php ligne 3 a 5)
+
+
+
+3)
+php/pages/admin_users.php 
+
+Pareil que product, avec les users 
