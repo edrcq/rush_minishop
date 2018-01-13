@@ -37,6 +37,6 @@ else {
 }
 
 
-require_once(__DIR__ . '/../php/content/footer.php');
+require_once(__DIR__ . '/../php/inc/footer.php');
 
 ?>
