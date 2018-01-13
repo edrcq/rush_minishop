@@ -20,7 +20,7 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
     if ($user->password != hash('sha512', $_POST['password'])) {
         $mm = 'Bad password x ' . $user->password;
         $_SESSION['error'] = ['from' => 'login', 'message' => $mm];
-        var_dump($user->debug());
+        var_dump($user->debug());die();
         header('Location: ../index.php?p=login');
         die();
     }
