@@ -13,14 +13,14 @@ class ProductManager {
 
     // Adds a product
     public function add(User $account) {
-        $q = $this->_db->prepare('INSERT INTO products SET name = :name, color = :color, stock = :stock, description = :description, category = :category, data = :data');
+        $q = $this->_db->prepare('INSERT INTO products SET name = :name, color = :color, stock = :stock, description = :description, category = :category, jsondata = :jsondata');
 
         $q->bindValue(':name',$account->name);
         $q->bindValue(':color',$account->color);
         $q->bindValue(':stock',$account->stock);
         $q->bindValue(':description',$account->description);
         $q->bindValue(':category',$account->category);
-        $q->bindValue(':data',$account->data);
+        $q->bindValue(':jsondata',$account->jsondata);
 
         $q->execute();
 
@@ -179,7 +179,7 @@ class ProductManager {
 	}
 
     public function update(Product $product) {
-        $q = $this->_db->prepare('UPDATE product SET name = :name, color = :color, stock = :stock, description = :description, category = :category WHERE id = :id');
+        $q = $this->_db->prepare('UPDATE product SET name = :name, color = :color, stock = :stock, description = :description, category = :category, jsondata = :jsondata WHERE id = :id');
 
         $q->bindValue(':id',$product->id);
         $q->bindValue(':name',$product->name);
@@ -187,7 +187,7 @@ class ProductManager {
         $q->bindValue(':stock',$product->stock);
         $q->bindValue(':description',$product->description);
         $q->bindValue(':category',$product->category);
-        $q->bindValue(':data',$product->data);
+        $q->bindValue(':jsondata',$product->jsondata);
 
         $q->execute();
         return (true);
