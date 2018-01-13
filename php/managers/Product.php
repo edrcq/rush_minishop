@@ -106,10 +106,11 @@ class ProductManager {
 		$data = $q->fetchAll(PDO::FETCH_ASSOC);
 		$products = [];
 		foreach ($data as $prd) {
+			
 			$prod = new Product;
-			$products[] = $prod->hydrate($prd);
+			$prod->hydrate($prd);
+			$products[] = $prod;
 		}
-		file_put_contents('/tmp/prod.data', json_encode($products));
         return ($products);
     }
 
