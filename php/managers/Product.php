@@ -101,13 +101,15 @@ class ProductManager {
 	}
 
     public function getAll() {
-        $q = $this->_db->query('SELECT * FROM products');
+		$q = $this->_db->prepare('SELECT * FROM products');
+		$q->execute();
 		$data = $q->fetchAll();
 		$products = [];
 		foreach ($data as $prd) {
 			$prod = new Product;
 			$products[] = $prod->hydrate($prd);
 		}
+		file_put_contents('/tmp/prod.data', json_encode($data));
         return ($products);
     }
 
