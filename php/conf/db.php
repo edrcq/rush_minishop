@@ -1,7 +1,7 @@
 <?php
 
-$db['user'] = "root";
-$db['pass'] = "";
+$db['user'] = "minishop_ec";
+$db['pass'] = "Hil741Uvwy59csH1";
 $db['host'] = "127.0.0.1";
 $db['base'] = "minishop_ec";
 $db['port'] = 3306;
