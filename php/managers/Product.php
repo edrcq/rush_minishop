@@ -106,7 +106,7 @@ class ProductManager {
         return ($data);
     }
 
-	public function getItem($s) {
+	public function getFilters($s) {
 		$idx = -1;
 		$arr = explode(' ', $s);
 		$tmp = [NULL, NULL. NULL];
@@ -126,6 +126,37 @@ class ProductManager {
 			if ($tmp[$idx] !== NULL)
 				$sq .= $sq ? ' UNION '.$tmp[$idx] : $tmp[$idx];
 		}
+		$q = $this->_db->prepare($sq);
+		$q->execute();
+		$products = $q->fetchAll();
+		$idx = -1;
+		while ($products[++$idx])
+		{
+      	  $product = new Product;
+      	  $ret[] = $product->hydrate($products);
+		}
+		return ($ret);
+	}
+
+	public function getSearch($s) {
+		$idx = -1;
+		$arr = explode(' ', $s);
+		$tmp = [NULL, NULL. NULL];
+
+		while ($arr[++$idx])
+		{
+			if (count(getByName($arr[$idx])->id))
+				$tmp[0] .= 'name = :category, ';
+			if (count(getByColor($arr[$idx])))
+				$tmp[1] .= 'color = :search, ';
+			if (count(getByCategory($arr[$idx])))
+				$tmp[2] .= 'category = :search, ';
+		}
+		$idx = -1;
+		while (++$idx < 3)
+			if ($tmp[$idx] !== NULL)
+				$sq .= $tmp[$idx];
+		$sq = trim($sq, ',');
 		$q = $this->_db->prepare($sq);
 		$q->execute();
 		$products = $q->fetchAll();
