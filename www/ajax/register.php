@@ -6,12 +6,12 @@ require_once(__DIR__ . '/../../php/init.php');
 if (isset($_POST['email']) && isset($_POST['password']) && isset($_POST['rpassword'])) {
     if (filter_var($_POST['email'], FILTER_VALIDATE_EMAIL) === false) {
         $_SESSION['error'] = ['from' => 'register', 'message' => 'Bad email'];
-        header('Location: index.php?p=register');
+        header('Location: ../index.php?p=register');
         die();
     }
     if ($_POST['password'] != $_POST['rpassword']) {
         $_SESSION['error'] = ['from' => 'register', 'message' => 'Bad repeat password'];
-        header('Location: index.php?p=register');
+        header('Location: ../index.php?p=register');
         die();
     }
     $user = new User;
@@ -25,10 +25,10 @@ if (isset($_POST['email']) && isset($_POST['password']) && isset($_POST['rpasswo
         $_SESSION['register'] = ['from' => 'register', 'message' => 'Thanks for your registration!'];
     else
         $_SESSION['error'] = ['from' => 'register', 'message' => 'Problem for add you in database, re-try or contact an administrator'];
-    header('Location: index.php?p=register');
+    header('Location: ../index.php?p=register');
     die();
 }
-header('Location: index.php?p=register');
+header('Location: ../index.php?p=register');
 die();
 
 ?> 
