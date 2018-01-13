@@ -15,7 +15,7 @@ if (isset($_POST['email']) && isset($_POST['password']) && isset($_POST['rpasswo
         die();
     }
     $user_exist = $UserManager->getByEmail($_POST['email']);
-    if (intval($user_exist->id) > 0) {
+    if (!($user_exist->id)) {
         $_SESSION['error'] = ['from' => 'register', 'message' => 'You already have an account'];
         header('Location: ../index.php?p=register');
         die();
