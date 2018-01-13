@@ -7,7 +7,7 @@ $categories = json_decode(file_get_contents("conf/categories.json"));
  * A instance of PDO for reach the mysql database
  * Config : php/conf/settings.json
  */ 
-require_once('conf/db.php');
+include_once('conf/db.php');
 
 /* Authorized pages */
 $pages = ['login', 'home', 'products'];
