@@ -3,6 +3,11 @@ session_start();
 
 require_once(__DIR__ . '/../../php/init.php');
 
+if (!empty($_SESSION['connected'])) {
+    header('Location: ../index.php?p=home');
+    die();
+}
+
 if (isset($_POST['email']) && isset($_POST['password'])) {
     if (filter_var($_POST['email'], FILTER_VALIDATE_EMAIL) === false) {
         $_SESSION['error'] = ['from' => 'login', 'message' => 'Bad email format'];
@@ -18,12 +23,7 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
     }
 
     if ($user->password != hash('sha512', $_POST['password'])) {
-        $mm = 'Bad password x ' . $user->password;
-        echo $user->password;
-        echo $user->id;
-        echo $user->email;
-        die();
-        $_SESSION['error'] = ['from' => 'login', 'message' => $mm];
+        $_SESSION['error'] = ['from' => 'login', 'message' => 'Bad password'];
         header('Location: ../index.php?p=login');
         die();
     }

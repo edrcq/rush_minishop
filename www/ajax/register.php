@@ -3,6 +3,11 @@ session_start();
 
 require_once(__DIR__ . '/../../php/init.php');
 
+if (!empty($_SESSION['connected'])) {
+    header('Location: ../index.php?p=home');
+    die();
+}
+
 if (isset($_POST['email']) && isset($_POST['password']) && isset($_POST['rpassword'])) {
     if (filter_var($_POST['email'], FILTER_VALIDATE_EMAIL) === false) {
         $_SESSION['error'] = ['from' => 'register', 'message' => 'Bad email format'];
