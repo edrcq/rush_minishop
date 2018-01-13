@@ -102,8 +102,13 @@ class ProductManager {
 
     public function getAll() {
         $q = $this->_db->query('SELECT * FROM products');
-        $data = $q->fetchAll();
-        return ($data);
+		$data = $q->fetchAll();
+		$products = [];
+		foreach ($data as $prd) {
+			$prod = new Product;
+			$products[] = $prod->hydrate($prd);
+		}
+        return ($products);
     }
 
 	public function getFilters($s) {

@@ -31,5 +31,6 @@ foreach (scandir($managersPath) as $filename) {
 }
 
 $UserManager = new UserManager($db);
+$ProductManager = new ProductManager($db);
 
 ?>

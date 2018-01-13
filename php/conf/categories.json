@@ -1,14 +1,22 @@
 [
     {
         "id": 1,
-        "name": "computers"
+        "name": "Computers",
+        "key": "computer"
     },
     {
         "id": 2,
-        "name": "clothing"
+        "name": "Clothing",
+        "key": "clothing"
     },
     {
         "id": 3,
-        "name": "cryptocurrencies"
+        "name": "Cryptocurrencies",
+        "key": "cryptocurrency"
+    },
+    {
+        "id": 4,
+        "name": "Phones",
+        "key": "phone"
     }
 ]
