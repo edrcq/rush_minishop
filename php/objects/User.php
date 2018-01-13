@@ -50,7 +50,7 @@ class User {
     
     public function UserRole() {
         if($this->type == 0) return "Banni";
-        if($this->type == 1) return "Client";
+        if($this->type == 1) return "Utilisateur";
         if($this->type == 10) return "Premium";
         if($this->type == 100) return "Administrateur";
     }
