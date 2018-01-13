@@ -1,6 +1,6 @@
 <?php session_start();
 
-require_once('../php/init.php');
+// require_once(__DIR__ . '/../php/init.php');
 
 if(!empty($_SESSION['connected'])) {
 	$connected = true;
@@ -31,17 +31,19 @@ if(isset($_GET)) {
     
 }
 
-if(isset($page) && in_array($page,$pages)) {
-    $page_now = ucfirst($page);
-    require_once('php/content/header.php');
-    require_once('php/content/menu.php');
-    require_once('php/pages/'.$page.'.php');
-}
+// if(isset($page) && in_array($page,$pages)) {
+//     $pageTitle = ucfirst($page);
+//     require_once(__DIR__ . '/../php/inc/header.php');
+//     require_once(__DIR__ . '/../php/inc/menu.php');
+//     require_once(__DIR__ . '/../php/pages/'.$page.'.php');
+// }
 else {
     require_once('404.html');
 }
 
 
-require_once('php/content/footer.php');
+require_once(__DIR__ . '/../php/inc/header.php');
+require_once(__DIR__ . '/../php/pages/'.$page.'.php');
+require_once(__DIR__ . '/../php/inc/footer.php');
 
 ?>
