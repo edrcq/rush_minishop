@@ -3,9 +3,11 @@
     <?php
     if (isset($_SESSION['error'])) {
         echo 'Error! ' . $_SESSION['error']['message'];
+        unset($_SESSION['error']);
     }
     if (isset($_SESSION['register'])) {
         echo 'Success! ' . $_SESSION['register']['message'];
+        unset($_SESSION['register']);
     }
     ?>
     </p> 
