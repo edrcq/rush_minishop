@@ -1,5 +1,6 @@
 <div id="menu">
     <ul>
+        <li><a href="?p=home">Home</a></li>
         <li>Our products :<ul>
     <?php 
         foreach ($categories as $category) {
@@ -7,11 +8,12 @@
         }
     ?>
         </ul></li>
-    <?php if (!$connected) { ?>
-    <li><a href="?p=register">Register</a></li>
-    <li><a href="?p=login">Login</a></li>
-    <?php } else { ?>
-    <li><a href="?p=logout">Logout</a></li>
-    <?php } ?>
+        <li><a href="?p=cart">My Cart</a></li>
+        <?php if (!$connected) { ?>
+        <li><a href="?p=register">Register</a></li>
+        <li><a href="?p=login">Login</a></li>
+        <?php } else { ?>
+        <li><a href="?p=logout">Logout</a></li>
+        <?php } ?>
     </ul>
 </div>

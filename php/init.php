@@ -10,7 +10,7 @@ $categories = json_decode(file_get_contents(__DIR__ . "/conf/categories.json"), 
 include_once('conf/db.php');
 
 /* Authorized pages */
-$pages = ['login', 'register', 'logout', 'home', 'products'];
+$pages = ['login', 'register', 'logout', 'home', 'products', 'cart'];
 
 /* Loading Objects */
 $objectsPath = __DIR__ . '/objects';
