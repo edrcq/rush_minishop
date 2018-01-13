@@ -14,6 +14,13 @@ if (isset($_POST['email']) && isset($_POST['password']) && isset($_POST['rpasswo
         header('Location: ../index.php?p=register');
         die();
     }
+    $user_exist = $UserManager->getByEmail($_POST['email']);
+    if (intval($user_exist->id) > 0) {
+        $_SESSION['error'] = ['from' => 'register', 'message' => 'You already have an account'];
+        header('Location: ../index.php?p=register');
+        die();
+    }
+
     $user = new User;
     $user->email = $_POST['email'];
     $user->password = hash('sha512', $_POST['password']);
