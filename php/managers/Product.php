@@ -69,19 +69,18 @@ class ProductManager {
     }
 
     public function getByCategory($category) {
-		$idx = -1;
-		$arr = [];
+		$products = [];
 
         $q = $this->_db->prepare('SELECT * FROM products WHERE category = :category');
         $q->bindValue(':category',$category);
         $q->execute();
-        $products = $q->fetchAll(PDO::FETCH_ASSOC);
-		while ($products[++$idx])
-		{
-      	  $product = new Product;
-      	  $arr[] = $product->hydrate($products);
+        $data = $q->fetchAll(PDO::FETCH_ASSOC);
+		foreach ($data as $prd) {
+			$prod = new Product;
+			$prod->hydrate($prd);
+			$products[] = $prod;
 		}
-        return ($arr);
+        return ($products);
     }
 
 	public function getByName($name) {
