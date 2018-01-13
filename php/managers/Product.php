@@ -13,14 +13,14 @@ class ProductManager {
 
     // Adds a product
     public function add(User $account) {
-        $q = $this->_db->prepare('INSERT INTO products SET name = :name, color = :color, stock = :stock, description = :description, category = :category, data = :data');
+        $q = $this->_db->prepare('INSERT INTO products SET name = :name, color = :color, price = :price, img = :img, stock = :stock, description = :description, category = :category, jsondata = :jsondata');
 
         $q->bindValue(':name',$account->name);
         $q->bindValue(':color',$account->color);
         $q->bindValue(':stock',$account->stock);
         $q->bindValue(':description',$account->description);
         $q->bindValue(':category',$account->category);
-        $q->bindValue(':data',$account->data);
+        $q->bindValue(':jsondata',$account->jsondata);
 
         $q->execute();
 
@@ -42,7 +42,7 @@ class ProductManager {
             $q = $this->_db->prepare('SELECT * FROM products WHERE id = :id');
             $q->bindValue(':id',$id);
             $q->execute();
-            $productData = $q->fetch();
+            $productData = $q->fetch(PDO::FETCH_ASSOC);
             $product = new Product;
             $product->hydrate($productData);
             return ($product);
@@ -57,7 +57,7 @@ class ProductManager {
         $q = $this->_db->prepare('SELECT * FROM products WHERE color = :color');
         $q->bindValue(':color',$color);
         $q->execute();
-        $products = $q->fetchAll();
+        $products = $q->fetchAll(PDO::FETCH_ASSOC);
 		while ($products[++$idx])
 		{
       	  $product = new Product;
@@ -69,19 +69,18 @@ class ProductManager {
     }
 
     public function getByCategory($category) {
-		$idx = -1;
-		$arr = [];
+		$products = [];
 
         $q = $this->_db->prepare('SELECT * FROM products WHERE category = :category');
         $q->bindValue(':category',$category);
         $q->execute();
-        $products = $q->fetchAll();
-		while ($products[++$idx])
-		{
-      	  $product = new Product;
-      	  $arr[] = $product->hydrate($products);
+		$data = $q->fetchAll(PDO::FETCH_ASSOC);
+		foreach ($data as $prd) {
+			$prod = new Product;
+			$prod->hydrate($prd);
+			$products[] = $prod;
 		}
-        return ($arr);
+        return ($products);
     }
 
 	public function getByName($name) {
@@ -91,7 +90,7 @@ class ProductManager {
         $q = $this->_db->prepare('SELECT * FROM products WHERE name = :name');
         $q->bindValue(':name',$name);
         $q->execute();
-        $products = $q->fetchAll();
+        $products = $q->fetchAll(PDO::FETCH_ASSOC);
 		while ($products[++$idx])
 		{
       	  $product = new Product;
@@ -101,9 +100,16 @@ class ProductManager {
 	}
 
     public function getAll() {
-        $q = $this->_db->query('SELECT * FROM products');
-        $data = $q->fetchAll();
-        return ($data);
+		$q = $this->_db->prepare('SELECT * FROM products');
+		$q->execute();
+		$data = $q->fetchAll(PDO::FETCH_ASSOC);
+		$products = [];
+		foreach ($data as $prd) {
+			$prod = new Product;
+			$prod->hydrate($prd);
+			$products[] = $prod;
+		}
+        return ($products);
     }
 
 	public function getFilters($s) {
@@ -128,7 +134,7 @@ class ProductManager {
 		}
 		$q = $this->_db->prepare($sq);
 		$q->execute();
-		$products = $q->fetchAll();
+		$products = $q->fetchAll(PDO::FETCH_ASSOC);
 		$idx = -1;
 		while ($products[++$idx])
 		{
@@ -159,7 +165,7 @@ class ProductManager {
 		$sq = trim($sq, ',');
 		$q = $this->_db->prepare($sq);
 		$q->execute();
-		$products = $q->fetchAll();
+		$products = $q->fetchAll(PDO::FETCH_ASSOC);
 		$idx = -1;
 		while ($products[++$idx])
 		{
@@ -179,15 +185,16 @@ class ProductManager {
 	}
 
     public function update(Product $product) {
-        $q = $this->_db->prepare('UPDATE product SET name = :name, color = :color, stock = :stock, description = :description, category = :category WHERE id = :id');
+        $q = $this->_db->prepare('UPDATE product SET name = :name, color = :color, price = :price, img = :img, stock = :stock, description = :description, category = :category, jsondata = :jsondata WHERE id = :id');
 
         $q->bindValue(':id',$product->id);
         $q->bindValue(':name',$product->name);
         $q->bindValue(':color',$product->color);
         $q->bindValue(':stock',$product->stock);
         $q->bindValue(':description',$product->description);
-        $q->bindValue(':category',$product->category);
-        $q->bindValue(':data',$product->data);
+		$q->bindValue(':category',$product->category);
+		$q->bindValue(':img',$product->img);
+        $q->bindValue(':jsondata',$product->jsondata);
 
         $q->execute();
         return (true);

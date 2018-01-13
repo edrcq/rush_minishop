@@ -8,7 +8,7 @@ class User {
         "password" => "",
         "role" => "",
         "registration_date" => "",
-        "data" => ""
+        "jsondata" => ""
     );
     
     public function __set($name, $value)
@@ -39,18 +39,16 @@ class User {
     }
 
     public function setData($data) {
-        $this->data['data'] = json_encode($data);
+        $this->data['jsondata'] = json_encode($data);
     }
 
     public function getData($data) {
-        return json_decode($this->data['data']);
+        return json_decode($this->data['jsondata']);
     }
-
-
     
     public function UserRole() {
         if($this->type == 0) return "Banni";
-        if($this->type == 1) return "Client";
+        if($this->type == 1) return "Utilisateur";
         if($this->type == 10) return "Premium";
         if($this->type == 100) return "Administrateur";
     }

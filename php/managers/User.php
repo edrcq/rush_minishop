@@ -13,12 +13,12 @@ class UserManager {
 
     // Ajouter un utilisateur
     public function add(User $account) {
-        $q = $this->_db->prepare('INSERT INTO accounts SET password = :password, email = :email, role = :role, registration_date = NOW(), data = :data');
+        $q = $this->_db->prepare('INSERT INTO accounts SET password = :password, email = :email, role = :role, registration_date = NOW(), jsondata = :jsondata');
 
         $q->bindValue(':password',$account->password);
         $q->bindValue(':email',$account->email);
         $q->bindValue(':role',$account->role);
-        $q->bindValue(':data',$account->data);
+        $q->bindValue(':jsondata',$account->jsondata);
 
         $q->execute();
 
@@ -40,9 +40,11 @@ class UserManager {
             $q = $this->_db->prepare('SELECT * FROM accounts WHERE id = :id');
             $q->bindValue(':id',$id);
             $q->execute();
-            $userData = $q->fetch();
+            $userData = $q->fetch(PDO::FETCH_ASSOC);
             $user = new User;
-            $user->hydrate($userData);
+            if ($userData !== false) {
+                $user->hydrate($userData);
+            }
             return ($user);
         }
         return (false);
@@ -53,32 +55,34 @@ class UserManager {
         $q = $this->_db->prepare('SELECT * FROM accounts WHERE email = :email');
         $q->bindValue(':email',$email);
         $q->execute();
-        $userData = $q->fetch();
+        $userData = $q->fetch(PDO::FETCH_ASSOC);
         $user = new User;
-        $user->hydrate($userData);
+        if ($userData !== false) {
+            $user->hydrate($userData);
+        }
         return $user;
     }
 
     public function getAll() {
         $q = $this->_db->query('SELECT * FROM accounts');
-        $data = $q->fetchAll();
+        $data = $q->fetchAll(PDO::FETCH_ASSOC);
         return ($data);
     }
 
     // 
     public function getCount() {
         $q = $this->_db->query('SELECT count(id) FROM accounts');
-        return $q->fetch()[0];
+        return $q->fetch(PDO::FETCH_ASSOC)[0];
     }
 
     public function update(User $account) {
-        $q = $this->_db->prepare('UPDATE accounts SET password = :password, email = :email, email = :email, role = :role, data = :data WHERE id = :id');
+        $q = $this->_db->prepare('UPDATE accounts SET password = :password, email = :email, email = :email, role = :role, jsondata = :jsondata WHERE id = :id');
 
         $q->bindValue(':id',$account->id);
         $q->bindValue(':password',$account->password);
         $q->bindValue(':email',$account->email);
         $q->bindValue(':role',$account->role);
-        $q->bindValue(':data',$account->data);
+        $q->bindValue(':jsondata',$account->jsondata);
 
         $q->execute();
         return (true);
