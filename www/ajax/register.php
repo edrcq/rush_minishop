@@ -19,19 +19,19 @@ if (isset($_POST['email']) && isset($_POST['password']) && isset($_POST['rpasswo
         header('Location: ../index.php?p=register');
         die();
     }
-    $user_exist = $UserManager->getByEmail($_POST['email']);
-    if ($user_exist->id !== "") {
+    $user_exist = UserManagerGetByEmail($_POST['email']);
+    if (intval($user_exist['id']) > 0) {
         $_SESSION['error'] = ['from' => 'register', 'message' => 'You already have an account'];
         header('Location: ../index.php?p=register');
         die();
     }
 
-    $user = new User;
-    $user->email = $_POST['email'];
-    $user->password = hash('sha512', $_POST['password']);
-    $user->role = 1;
+    $user = newUser();
+    $user['email'] = $_POST['email'];
+    $user['password'] = hash('sha512', $_POST['password']);
+    $user['role'] = 1;
 
-    $id = $UserManager->add($user);
+    $id = UserManagerAdd($user);
 
     if ($id > 0)
         $_SESSION['register'] = ['from' => 'register', 'message' => 'Thanks for your registration! '];

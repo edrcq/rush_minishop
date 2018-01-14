@@ -13,26 +13,13 @@ include_once('conf/db.php');
 $pages = ['login', 'register', 'logout', 'home', 'products', 'cart', 'myaccount', 'orderplaced'];
 $pages_admin = ['products', 'users', 'categories', 'orders'];
 
-/* Loading Objects */
-$objectsPath = __DIR__ . '/objects';
-foreach (scandir($objectsPath) as $filename) {
-    $path = $objectsPath . '/' . $filename;
-    if (is_file($path)) {
-        require $path;
-    }
-}
-
-/* Loading Managers */
-$managersPath = __DIR__ . '/managers';
+/* Loading procedural Database */
+$managersPath = __DIR__ . '/proceduralDatabase';
 foreach (scandir($managersPath) as $filename) {
     $path = $managersPath . '/' . $filename;
     if (is_file($path)) {
-        require $path;
+        require_once $path;
     }
 }
-
-$UserManager = new UserManager($db);
-$ProductManager = new ProductManager($db);
-$OrderManager = new ProductManager($db);
 
 ?>

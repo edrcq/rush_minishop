@@ -82,8 +82,15 @@ function printCartOnPage() {
     if (window.location.href.indexOf('cart') > -1) {
         console.log(Cart);
         var cartDiv = document.getElementById('cart');
-        cartDiv.innerHTML = "";
+
+        while (cartDiv.firstChild) {
+            cartDiv.removeChild(cartDiv.firstChild);
+        }
+
         for (id in Cart.list) {
+            if (!(Cart.list[id].quantity > 0)) {
+                continue ;
+            }
             var item = document.createElement("div");
             var itemName = document.createElement("div");
             var itemPrice = document.createElement("div");

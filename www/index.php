@@ -7,7 +7,7 @@ $isAdmin = false;
 
 if(!empty($_SESSION['connected'])) {
 	$connected = true;
-    $user = $UserManager->get($_SESSION['user']);
+    $user = UserManagerGet($_SESSION['user']);
 }
 
 if (isset($_SESSION['admin']) && $_SESSION['admin'] === true) {
@@ -46,5 +46,7 @@ else {
 
 
 require_once(__DIR__ . '/../php/inc/footer.php');
+
+mysqli_close($mysqli);
 
 ?>
