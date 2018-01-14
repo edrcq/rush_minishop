@@ -113,11 +113,11 @@ function printCartOnPage() {
             cartDiv.appendChild(item);
         }
         var nbItem = document.createElement("div");
-        nbItem.appendChild(document.createTextNode(Cart.nb));
+        nbItem.appendChild(document.createTextNode("Count items : " + Cart.nb));
         nbItem.classList.add('nbItem');
         var totalCart = document.createElement("div");
         totalCart.classList.add('totalCart');
-        totalCart.appendChild(document.createTextNode(Cart.total));
+        totalCart.appendChild(document.createTextNode("Total : " + Cart.total + " $"));
         cartDiv.appendChild(nbItem);
         cartDiv.appendChild(totalCart);
         fillFormData();
