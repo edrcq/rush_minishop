@@ -13,8 +13,8 @@ if (!isset($_SESSION['admin']) || $_SESSION['admin'] === false) {
 }
 var_dump($_POST);
 $aff_row = ProductManagerUpdate($_POST);
-
-header('Location: ../index.php?p=aord');
+var_dump($aff_row);
+//header('Location: ../index.php?p=aord');
 die();
 
 ?>
