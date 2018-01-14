@@ -8,12 +8,17 @@ if (empty($_SESSION['connected'])) {
     header('Location: ../index.php?p=login');
     die();
 }
-
-$postdata = file_get_contents("php://input");
+if (!isset($_POST['cartData'])) {
+    $_SESSION['error'] = ['from' => 'cart', 'message' => 'Empty cart...'];
+    header('Location: ../index.php?p=cart');
+    die();
+}
+$postdata = $_POST['cartData'];
 
 $data = json_decode($postdata, true);
+
 if (json_last_error() !== JSON_ERROR_NONE) {
-    $_SESSION['error'] = ['from' => 'cart', 'message' => 'Bad cart format, strange error, do you want to fuck us? Oo"'];
+    $_SESSION['error'] = ['from' => 'cart', 'message' => $postdata];
     header('Location: ../index.php?p=cart');
     die();
 }
