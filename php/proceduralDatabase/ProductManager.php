@@ -160,11 +160,11 @@
     function ProductManagerUpdate($p) {
 		global $mysqli;
 
-		$p['img'] = '';
+		$img = '';
 		$price = floatval($p['price']);
 		$id = intval($p['id']);
 		$stmt = mysqli_prepare($mysqli, 'UPDATE products SET name = ?, category = ?, color = ?, description = ?, stock = ?, jsondata = ?, img = ?, price = ? WHERE id = ?');
-		mysqli_stmt_bind_param($stmt, 'sssssssdi', $p['name'], $p['category'], $p['color'], $p['description'], $p['stock'], $p['jsondata'], $p['img'], $price, $id);
+		mysqli_stmt_bind_param($stmt, 'sssssssdi', $p['name'], $p['category'], $p['color'], $p['description'], $p['stock'], $p['jsondata'], $img, $price, $id);
 		mysqli_stmt_execute($stmt);
         return (mysqli_affected_rows($mysqli));
     }
