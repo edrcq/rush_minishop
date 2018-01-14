@@ -1,118 +1,88 @@
 <?php
-class ProductManager {
+    function add($p) {
+		global $mysqli;
 
-    private $_db;
-
-    public function __construct($db) {
-        $this->setDb($db);
+		$stmt = mysqli_prepare($mysqli, 'INSERT INTO products SET name = ?, color = ?, price = ?, img = ?, stock = ?, description = ?, category = ?, jsondata = ?');
+		mysqli_stmt_bind_param($stmt, 'ssssss', $p['name'], $p['color'], $p['price'], $p['img'], $p['stock'], $p['description'], $p['category'], $p['jsondata']);
+		mysqli_execute($stmt);
+        return (mysqli_insert_id($mysqli));
     }
 
-    public function setDb(PDO $db) {
-        $this->_db = $db;
+    function delete($product) {
+		global $mysqli;
+
+		$stmt = mysqli_prepare($mysqli, 'DELETE FROM products WHERE id = ?');
+		mysqli_stmt_bind_param($stmt, 's', $p['id']);
+        return (mysqli_execute($stmt));
     }
 
-    // Adds a product
-    public function add(User $account) {
-        $q = $this->_db->prepare('INSERT INTO products SET name = :name, color = :color, price = :price, img = :img, stock = :stock, description = :description, category = :category, jsondata = :jsondata');
+    function get($id) {
+		global $mysqli;
 
-        $q->bindValue(':name',$account->name);
-        $q->bindValue(':color',$account->color);
-        $q->bindValue(':stock',$account->stock);
-        $q->bindValue(':description',$account->description);
-        $q->bindValue(':category',$account->category);
-        $q->bindValue(':jsondata',$account->jsondata);
-
-        $q->execute();
-
-        return ($this->_db->lastInsertId());
-    }
-
-    // Deletes a product
-    public function delete(Product $product) {
-        $q = $this->_db->prepare('DELETE FROM products WHERE id = :id');
-        $q->bindValue(':id',$product->id);
-        $q->execute();
-        return (true);
-    }
-
-	// Returns a Product object according to the id given as a parameter
-    public function get($id) {
         if($id = filter_var($id,FILTER_VALIDATE_INT))
         {
-            $q = $this->_db->prepare('SELECT * FROM products WHERE id = :id');
-            $q->bindValue(':id',$id);
-            $q->execute();
-            $productData = $q->fetch(PDO::FETCH_ASSOC);
-            $product = new Product;
-            $product->hydrate($productData);
-            return ($product);
+			$stmt = mysqli_prepare($mysqli, 'SELECT * FROM products WHERE id = ?');
+			mysqli_stmt_bind_param($stmt, 's', $id['id']);
+			mysqli_execute($stmt);
+			mysqli_stmt_bind_result($stmt, $p['id'], $p['name'], $p['category'], $p['color'], $p['description'], $p['stock'], $p['jsondata'], $p['img'], $p['price']);
+			while (mysqli_stmt_fetch($stmt))
+			{
+			}
+            return ($p);
         }
         return (false);
     }
 
-    public function getByColor($color) {
-		$idx = -1;
-		$arr = [];
+    function getByColor($col) {
+		global $mysqli;
 
-        $q = $this->_db->prepare('SELECT * FROM products WHERE color = :color');
-        $q->bindValue(':color',$color);
-        $q->execute();
-        $products = $q->fetchAll(PDO::FETCH_ASSOC);
-		while ($products[++$idx])
-		{
-      	  $product = new Product;
-      	  $arr[] = $product->hydrate($products);
-		}
-        $product = new Product;
-        $product->hydrate($products);
-		return ($arr);
+		$stmt = mysqli_prepare($mysqli, 'SELECT * FROM products WHERE color = ?');
+		mysqli_stmt_bind_param($stmt, 's', $col);
+		mysqli_execute($stmt);
+		mysqli_stmt_bind_result($stmt, $id, $name, $cat, $col, $desc, $st, $jd, $img, $pr);
+		while (mysqli_stmt_fetch($stmt))
+			$p[] = ['id' => $id, 'name' => $name, 'category' => $cat, 'color' => $col, 'description' => $desc, 'stock' => $st, 'jsondata' => $jd, 'img' => $img, 'price' => $pr];
+		return ($p);
     }
 
-    public function getByCategory($category) {
-		$products = [];
+    function getByCategory($cat) {
+		global $mysqli;
 
-        $q = $this->_db->prepare('SELECT * FROM products WHERE category = :category');
-        $q->bindValue(':category',$category);
-        $q->execute();
-		$data = $q->fetchAll(PDO::FETCH_ASSOC);
-		foreach ($data as $prd) {
-			$prod = new Product;
-			$prod->hydrate($prd);
-			$products[] = $prod;
-		}
-        return ($products);
+		$stmt = mysqli_prepare($mysqli, 'SELECT * FROM products WHERE color = ?');
+		mysqli_stmt_bind_param($stmt, 's', $cat['category']);
+		mysqli_execute($stmt);
+		mysqli_stmt_bind_result($stmt, $id, $name, $cat, $col, $desc, $st, $jd, $img, $pr);
+		while (mysqli_stmt_fetch($stmt))
+			$p[] = ['id' => $id, 'name' => $name, 'category' => $cat, 'color' => $col, 'description' => $desc, 'stock' => $st, 'jsondata' => $jd, 'img' => $img, 'price' => $pr];
+        return ($p);
     }
 
-	public function getByName($name) {
-		$idx = -1;
-		$arr = [];
+	function getByName($name) {
+		global $mysqli;
 
-        $q = $this->_db->prepare('SELECT * FROM products WHERE name = :name');
-        $q->bindValue(':name',$name);
-        $q->execute();
-        $products = $q->fetchAll(PDO::FETCH_ASSOC);
-		while ($products[++$idx])
-		{
-      	  $product = new Product;
-      	  $arr[] = $product->hydrate($products);
-		}
-        return ($arr);
+		$stmt = mysqli_prepare($mysqli, 'SELECT * FROM products WHERE name = ?');
+		mysqli_stmt_bind_param($stmt, 's', $name['name']);
+		mysqli_execute($stmt);
+		mysqli_stmt_bind_result($stmt, $id, $name, $cat, $col, $desc, $st, $jd, $img, $pr);
+		while (mysqli_stmt_fetch($stmt))
+			$p[] = ['id' => $id, 'name' => $name, 'category' => $cat, 'color' => $col, 'description' => $desc, 'stock' => $st, 'jsondata' => $jd, 'img' => $img, 'price' => $pr];
+        return ($p);
 	}
 
-    public function getAll() {
-		$q = $this->_db->prepare('SELECT * FROM products');
-		$q->execute();
-		$data = $q->fetchAll(PDO::FETCH_ASSOC);
-		$products = [];
-		foreach ($data as $prd) {
-			$prod = new Product;
-			$prod->hydrate($prd);
-			$products[] = $prod;
-		}
-        return ($products);
+    function getAll() {
+		global $mysqli;
+
+		$stmt = mysqli_prepare($mysqli, 'SELECT * FROM products');
+		mysqli_stmt_bind_param($stmt, 's', $name['name']);
+		mysqli_execute($stmt);
+		mysqli_stmt_bind_result($stmt, $id, $name, $cat, $col, $desc, $st, $jd, $img, $pr);
+		while (mysqli_stmt_fetch($stmt))
+			$p[] = ['id' => $id, 'name' => $name, 'category' => $cat, 'color' => $col, 'description' => $desc, 'stock' => $st, 'jsondata' => $jd, 'img' => $img, 'price' => $pr];
+        return ($p);
     }
 
-	public function getFilters($s) {
+	function getFilters($s) {
+		global $mysqli;
 		$idx = -1;
 		$arr = explode(' ', $s);
 		$tmp = [NULL, NULL. NULL];
@@ -120,11 +90,11 @@ class ProductManager {
 		while ($arr[++$idx])
 		{
 			if (count(getByName($arr[$idx])->id))
-				$tmp[0] .= 'SELECT * FROM products WHERE color name = :search';
+				$tmp[0] .= 'SELECT * FROM products WHERE color name = ?';
 			if (count(getByColor($arr[$idx])))
-				$tmp[1] .= 'SELECT * FROM products WHERE color = :search';
+				$tmp[1] .= 'SELECT * FROM products WHERE color = ?';
 			if (count(getByCategory($arr[$idx])))
-				$tmp[2] .= 'SELECT * FROM products WHERE category = :search';
+				$tmp[2] .= 'SELECT * FROM products WHERE category = ?';
 		}
 		$idx = -1;
 		while (++$idx < 3)
@@ -132,19 +102,17 @@ class ProductManager {
 			if ($tmp[$idx] !== NULL)
 				$sq .= $sq ? ' UNION '.$tmp[$idx] : $tmp[$idx];
 		}
-		$q = $this->_db->prepare($sq);
-		$q->execute();
-		$products = $q->fetchAll(PDO::FETCH_ASSOC);
-		$idx = -1;
-		while ($products[++$idx])
-		{
-      	  $product = new Product;
-      	  $ret[] = $product->hydrate($products);
-		}
-		return ($ret);
+		$stmt = mysqli_prepare($mysqli, $sq);
+		mysqli_stmt_bind_param($stmt, 'sss', $name['name'], $col['color'], $cat['category']);
+		mysqli_execute($stmt);
+		mysqli_stmt_bind_result($stmt, $id, $name, $cat, $col, $desc, $st, $jd, $img, $pr);
+		while (mysqli_stmt_fetch($stmt))
+			$p[] = ['id' => $id, 'name' => $name, 'category' => $cat, 'color' => $col, 'description' => $desc, 'stock' => $st, 'jsondata' => $jd, 'img' => $img, 'price' => $pr];
+        return ($p);
 	}
 
-	public function getSearch($s) {
+	function getSearch($s) {
+		global $mysqli;
 		$idx = -1;
 		$arr = explode(' ', $s);
 		$tmp = [NULL, NULL. NULL];
@@ -152,53 +120,47 @@ class ProductManager {
 		while ($arr[++$idx])
 		{
 			if (count(getByName($arr[$idx])->id))
-				$tmp[0] .= 'name = :category, ';
+				$tmp[0] .= 'name = ?, ';
 			if (count(getByColor($arr[$idx])))
-				$tmp[1] .= 'color = :search, ';
+				$tmp[1] .= 'color = ?, ';
 			if (count(getByCategory($arr[$idx])))
-				$tmp[2] .= 'category = :search, ';
+				$tmp[2] .= 'category = ?, ';
 		}
 		$idx = -1;
 		while (++$idx < 3)
-			if ($tmp[$idx] !== NULL)
-				$sq .= $tmp[$idx];
-		$sq = trim($sq, ',');
-		$q = $this->_db->prepare($sq);
-		$q->execute();
-		$products = $q->fetchAll(PDO::FETCH_ASSOC);
-		$idx = -1;
-		while ($products[++$idx])
 		{
-      	  $product = new Product;
-      	  $ret[] = $product->hydrate($products);
+			if ($tmp[$idx] !== NULL)
+				$sq .= $sq ? ' UNION '.$tmp[$idx] : $tmp[$idx];
 		}
-		return ($ret);
+		$sq = trim($sq, ',');
+		$stmt = mysqli_prepare($mysqli, $sq);
+		mysqli_stmt_bind_param($stmt, 'sss', $tmp[0] ? $name['name'] : NULL, $tmp[1] ? $col['color'] : NULL, $tmp[2] ? $cat['category'] : NULL);
+		mysqli_execute($stmt);
+		mysqli_stmt_bind_result($stmt, $id, $name, $cat, $col, $desc, $st, $jd, $img, $pr);
+		while (mysqli_stmt_fetch($stmt))
+			$p[] = ['id' => $id, 'name' => $name, 'category' => $cat, 'color' => $col, 'description' => $desc, 'stock' => $st, 'jsondata' => $jd, 'img' => $img, 'price' => $pr];
+        return ($p);
 	}
 
-	private function validArg($s) {
+	function validArg($s) {
+		global $mysqli;
 		$ret = FALSE;
 
-		$q->bindValue(':data',$s);
-		if ($q = $this->_db->query('SELECT * FROM products WHERE * = :data'))
+		$stmt = mysqli_prepare($mysqli, 'SELECT * FROM products WHERE * = ?');
+		mysqli_stmt_bind_param($stmt, 's', $s);
+		mysqli_execute($stmt);
+		mysqli_stmt_bind_result($stmt, $jd);
+		if (mysqli_stmt_fetch($stmt))
 			$ret = TRUE;
 		return ($ret);
 	}
 
-    public function update(Product $product) {
-        $q = $this->_db->prepare('UPDATE product SET name = :name, color = :color, price = :price, img = :img, stock = :stock, description = :description, category = :category, jsondata = :jsondata WHERE id = :id');
+    function update($p) {
+		global $mysqli;
 
-        $q->bindValue(':id',$product->id);
-        $q->bindValue(':name',$product->name);
-        $q->bindValue(':color',$product->color);
-        $q->bindValue(':stock',$product->stock);
-        $q->bindValue(':description',$product->description);
-		$q->bindValue(':category',$product->category);
-		$q->bindValue(':img',$product->img);
-        $q->bindValue(':jsondata',$product->jsondata);
-
-        $q->execute();
-        return (true);
+		$stmt = mysqli_prepare($mysqli, 'UPDATE product SET name = ?, category = ?, color = ?, description = ?, stock = ?, jsondata = ?, img = ?, price = ? WHERE id = ?');
+		mysqli_stmt_bind_param($stmt, 'ssssssss', $p['name'], $p['category'], $p['color'], $p['description'], $p['stock'], $p['jsondata'], $p['img'], $p['price'], $p['id']);
+        return (mysqli_execute($stmt));
     }
 }
-
 ?>

@@ -17,10 +17,10 @@
     <?php 
         $products = [];
         if ($cat == 'all') {
-            $products = $ProductManager->getAll();
+            $products = $ProductManagerGetAll();
         }
         else {
-            $products = $ProductManager->getByCategory($cat);
+            $products = $ProductManagerGetByCategory($cat);
         }
     ?>
     <br />
@@ -29,10 +29,11 @@
         foreach ($products as $product) {
             ?>
             <div class="product">
-                <h3 class="product-name"><?php echo $product->name; ?></h3>
-                <span class="product-desc"><?php echo $product->description; ?></span>
-                <span class="product-desc"><?php echo $product->price; ?></span>
-                <button class="btn btn-buy" onclick="cartAddProduct('<?php echo $product->id; ?>', '<?php echo $product->name; ?>', 1, '<?php echo $product->price; ?>')">Add 1 to cart</span>
+                <h3 class="product-name"><?php echo $product['name']; ?></h3>
+                <span class="product-desc"><?php echo $product['description']; ?></span>
+                <span class="product-desc"><?php echo $product['price']; ?></span>
+                <button class="btn btn-buy" onclick="cartAddProduct('<?php echo $product['id']; ?>', '<?php echo $product['name']; ?>', 1, '<?php echo $product['price']; ?>')">Add 1 to cart</span>
+
             </div>
             <?php 
         }

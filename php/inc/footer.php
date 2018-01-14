@@ -1,6 +1,7 @@
 <div class="footer">
-	<hr />
-	<span id="text">&copy; Edouard Rucquoy &amp; Cyril Raffatelli</span>
+	<div id="cpy">
+		&copy; Edouard Rucquoy &amp; Cyril Raffatelli
+	</div>
 </div>
 <script src="js/main.js"></script>
 </body>
