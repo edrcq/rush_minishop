@@ -18,7 +18,7 @@ $postdata = $_POST['cartData'];
 $data = json_decode($postdata, true);
 
 if (json_last_error() !== JSON_ERROR_NONE) {
-    $_SESSION['error'] = ['from' => 'cart', 'message' => $postdata];
+    $_SESSION['error'] = ['from' => 'cart', 'message' => 'MMMMH Do you try to hack ?'];
     header('Location: ../index.php?p=cart');
     die();
 }
@@ -29,7 +29,7 @@ if (!(isset($data['list']) && count($data['list']) !== 0)) {
     die();
 }
 
-$order = new Order;
+$order = [];
 
 $list = []; // ["id" => "quantity"]
 $total = 0;
