@@ -61,6 +61,9 @@ $order['status'] = "Pending confirmation";
 
 $order_id = OrderManagerAdd($order);
 
+var_dump($order);
+var_dump($order_id);
+
 if (intval($order_id) > 0) {
     $_SESSION['order'] = ['from' => 'cart', 'message' => 'Your order is placed!'];
     header('Location: ../index.php?p=orderplaced');
