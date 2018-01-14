@@ -10,14 +10,11 @@ try
     require_once(__DIR__ . '/php/proceduralDatabase/UserManager.php');
 
     // UserManagerAdd(acc)  UserManagerGet(id)
-    $id = UserManagerAdd(newUser());
-    var_dump($id);
 
-    $userEmail = UserManagerGetByEmail('er@gg.com');
-    var_dump($userEmail);
-    $nu = newUser();
-    $nu['id'] = 9;
-    UserManagerUpdate($nu);
+
+    $us = UserManagerGetAll();
+    var_dump($us);
+    
 }
 catch (Exception $e)
 {

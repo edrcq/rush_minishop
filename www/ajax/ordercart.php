@@ -33,10 +33,10 @@ foreach ($data['list'] as $id => $item) {
     if (intval($item['quantity']) == 0) {
         continue ;
     }
-    if (($product = $ProductManager->get($id)) === false) {
+    if (($product = ProductManagerGet($id)) === false) {
         continue ;
     }
-    $total += intval($item['quantity']) * floatval($product->price);
+    $total += intval($item['quantity']) * floatval($product['price']);
     $list[$id] = $item['quantity'];
     $nb += $item['quantity'];
 }
@@ -47,12 +47,12 @@ if (count($list) || $total == 0 || $nb == 0) {
     die();
 }
 
-$order->setList($list);
-$order->total = $total;
-$order->nb = $nb;
-$order->status = "Pending confirmation";
+$order['list'] = json_encode($list);
+$order['total'] = $total;
+$order['nb'] = $nb;
+$order['status'] = "Pending confirmation";
 
-$order_id = $OrderManager->add($order);
+$order_id = $OrderManagerAdd($order);
 
 if (intval($order_id) > 0) {
     $_SESSION['order'] = ['from' => 'cart', 'message' => 'Your order is placed!'];
