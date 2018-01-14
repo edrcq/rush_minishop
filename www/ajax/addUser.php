@@ -19,10 +19,11 @@ if (isset($_POST['email']) && isset($_POST['password']) && isset($_POST['role'])
         $user['email'] = $_POST['email'];
         $user['password'] = hash('sha512', $_POST['password']);
         $user['role'] = intval($_POST['role']);
-        UserManagerAdd($user);
+        $nid = UserManagerAdd($user);
     }
 }
-
-header('Location: ../index.php?p=ausers');
+var_dump($user);
+var_dump($nid);
+//header('Location: ../index.php?p=ausers');
 die();
 ?>
