@@ -20,10 +20,10 @@
     function ProductManagerGet($id) {
 		global $mysqli;
 
-        if($id = filter_var($id,FILTER_VALIDATE_INT))
+        if($id = filter_var($id, FILTER_VALIDATE_INT))
         {
 			$stmt = mysqli_prepare($mysqli, 'SELECT * FROM products WHERE id = ?');
-			mysqli_stmt_bind_param($stmt, 'd', $id['id']);
+			mysqli_stmt_bind_param($stmt, 'd', $id);
 			mysqli_stmt_execute($stmt);
 			mysqli_stmt_bind_result($stmt, $p['id'], $p['name'], $p['category'], $p['color'], $p['description'], $p['stock'], $p['jsondata'], $p['img'], $p['price']);
 			$produ = [];
