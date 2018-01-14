@@ -11,6 +11,7 @@ include_once('conf/db.php');
 
 /* Authorized pages */
 $pages = ['login', 'register', 'logout', 'home', 'products', 'cart'];
+$pages_admin = ['products', 'users', 'categories'];
 
 /* Loading Objects */
 $objectsPath = __DIR__ . '/objects';

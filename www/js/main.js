@@ -38,6 +38,23 @@ function cartSave() {
     localStorage.setItem('mycart', JSON.stringify(Cart));
 }
 
+function buyCart() {
+    fillFormData();
+    document.getElementById('cartForm').submit();
+}
+
+function cleanCart() {
+    Cart = {
+        nb: 0,
+        list: {},
+        total: 0.00,
+    };
+}
+
+function fillFormData() {
+    document.getElementById('cartData').value = JSON.stringify(Cart);
+}
+
 if (window.location.href.indexOf('cart') > -1) {
     console.log(Cart);
     var cartDiv = document.getElementById('cart');
@@ -63,4 +80,5 @@ if (window.location.href.indexOf('cart') > -1) {
     totalCart.appendChild(document.createTextNode(Cart.total));
     cartDiv.appendChild(nbItem);
     cartDiv.appendChild(totalCart);
+    fillFormData();
 }
