@@ -46,7 +46,7 @@ foreach ($data['list'] as $id => $item) {
     $nb += $item['quantity'];
 }
 
-if (count($list) || $total == 0 || $nb == 0) {
+if (count($list) == 0 || $total == 0 || $nb == 0) {
     $_SESSION['error'] = ['from' => 'cart', 'message' => 'Empty cart... 2'];
     header('Location: ../index.php?p=cart');
     die();
