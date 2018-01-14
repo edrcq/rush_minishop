@@ -3,7 +3,7 @@ session_start();
 
 require_once(__DIR__ . '/../../php/init.php');
 
-if (!empty($_SESSION['connected'])) {
+if (empty($_SESSION['connected'])) {
     $_SESSION['error'] = ['from' => 'cart', 'message' => 'You have to be connected for order your cart'];
     header('Location: ../index.php?p=login');
     die();
