@@ -31,7 +31,7 @@ function cartCalcTotal() {
 }
 
 function renderCart() {
-    console.log(Cart);
+    printCartOnPage();
 }
 
 function cartSave() {
@@ -55,30 +55,57 @@ function fillFormData() {
     document.getElementById('cartData').value = JSON.stringify(Cart);
 }
 
-if (window.location.href.indexOf('cart') > -1) {
-    console.log(Cart);
-    var cartDiv = document.getElementById('cart');
-    for (id in Cart.list) {
-        var item = document.createElement("div");
-        var itemName = document.createElement("div");
-        var itemPrice = document.createElement("div");
-        var itemQuantity = document.createElement("div");
-        var textPrice = document.createTextNode(Cart.list[id].price);
-        var textName = document.createTextNode(Cart.list[id].name);
-        var textQuantity = document.createTextNode(Cart.list[id].quantity);
-        itemQuantity.appendChild(textQuantity);
-        itemName.appendChild(textName);
-        itemPrice.appendChild(textPrice);
-        item.appendChild(itemName);
-        item.appendChild(itemPrice);
-        item.appendChild(itemQuantity);
-        cartDiv.appendChild(item);
+function removeOneItem(id) {
+    quantity = 0;
+    if (Cart.list.hasOwnProperty(id)) {
+        quantity = Cart.list[id].quantity - 1;
     }
-    var nbItem = document.createElement("div");
-    nbItem.appendChild(document.createTextNode(Cart.nb));
-    var totalCart = document.createElement("div");
-    totalCart.appendChild(document.createTextNode(Cart.total));
-    cartDiv.appendChild(nbItem);
-    cartDiv.appendChild(totalCart);
-    fillFormData();
+    else {
+        return ;
+    }
+    Cart.list[id].quantity = quantity;
+    Cart.nb++;
+    cartCalcTotal();
 }
+
+function createRemoveBtn(id) {
+    var btn = document.createElement('button');
+    btn.classList.add('btn-rem')
+    btn.onclick = removeOneItem(id);
+    btn.appendChild(document.createTextNode('-1'));
+    return (btn);
+}
+
+function printCartOnPage() {
+    if (window.location.href.indexOf('cart') > -1) {
+        console.log(Cart);
+        var cartDiv = document.getElementById('cart');
+        for (id in Cart.list) {
+            var item = document.createElement("div");
+            var itemName = document.createElement("div");
+            var itemPrice = document.createElement("div");
+            var itemQuantity = document.createElement("div");
+            var textPrice = document.createTextNode(Cart.list[id].price);
+            var textName = document.createTextNode(Cart.list[id].name);
+            var textQuantity = document.createTextNode(Cart.list[id].quantity);
+            itemQuantity.appendChild(textQuantity);
+            itemName.appendChild(textName);
+            itemPrice.appendChild(textPrice);
+            item.appendChild(itemName);
+            item.appendChild(itemPrice);
+            item.appendChild(itemQuantity);
+            var btn = createRemoveBtn(id);
+            item.appendChild(btn);
+            cartDiv.appendChild(item);
+        }
+        var nbItem = document.createElement("div");
+        nbItem.appendChild(document.createTextNode(Cart.nb));
+        var totalCart = document.createElement("div");
+        totalCart.appendChild(document.createTextNode(Cart.total));
+        cartDiv.appendChild(nbItem);
+        cartDiv.appendChild(totalCart);
+        fillFormData();
+    }
+}
+
+printCartOnPage();
