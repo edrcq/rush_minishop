@@ -64,8 +64,8 @@ function removeOneItem(id) {
         return ;
     }
     Cart.list[id].quantity = quantity;
-    Cart.nb++;
-    cartCalcTotal();
+    Cart.nb--;
+    Cart.total -= Cart.list[id].price;
     printCartOnPage();
 }
 
