@@ -12,7 +12,7 @@
 		global $mysqli;
 
 		$stmt = mysqli_prepare($mysqli, 'DELETE FROM products WHERE id = ?');
-		mysqli_stmt_bind_param($stmt, 's', $p['id']);
+		mysqli_stmt_bind_param($stmt, 'd', $p['id']);
 		mysqli_execute($stmt);
         return (mysqli_affected_rows($mysqli));
     }
@@ -23,13 +23,16 @@
         if($id = filter_var($id,FILTER_VALIDATE_INT))
         {
 			$stmt = mysqli_prepare($mysqli, 'SELECT * FROM products WHERE id = ?');
-			mysqli_stmt_bind_param($stmt, 's', $id['id']);
+			mysqli_stmt_bind_param($stmt, 'd', $id['id']);
 			mysqli_execute($stmt);
 			mysqli_stmt_bind_result($stmt, $p['id'], $p['name'], $p['category'], $p['color'], $p['description'], $p['stock'], $p['jsondata'], $p['img'], $p['price']);
+			$produ = [];
 			while (mysqli_stmt_fetch($stmt))
 			{
+				$produ = $p;
 			}
-            return ($p);
+			file_put_contents('/tmp/prod', json_encode($p));
+            return ($produ);
         }
         return (false);
     }
