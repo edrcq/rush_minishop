@@ -16,7 +16,7 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
     }
     
     $user = UserManagerGetByEmail($_POST['email']);
-    if ($user->id === "") {
+    if ($user['id'] === "") {
         $_SESSION['error'] = ['from' => 'register', 'message' => 'You don\'t have an account'];
         header('Location: ../index.php?p=login');
         die();
