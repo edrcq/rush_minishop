@@ -2,7 +2,7 @@
     "db": {
         "user": "minishop_ec",
         "pass": "Hil741Uvwy59csH1",
-        "host": "127.0.0.1",
+        "host": "guiedo.com",
         "base": "minishop_ec",
         "port": "3306"
     }

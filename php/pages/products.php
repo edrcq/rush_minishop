@@ -29,8 +29,8 @@
         foreach ($products as $product) {
             ?>
             <div class="product">
-                <h3 class="product-name"><?php echo $product->name; ?></h3>
-                <span class="product-desc"><?php echo $product->description; ?></span>
+                <h3 class="name"><?php echo $product->name; ?></h3>
+                <span class="desc"><?php echo $product->description; ?></span>
             </div>
             <?php 
         }

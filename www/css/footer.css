@@ -1,16 +1,15 @@
 .footer
 {
-	width: 100%;
-	position: absolute;
+	position: fixed;
 	bottom: 0;
-}
-.footer hr
-{
-	position: relative;
-	color: #FF7700;
-}
-.footer #text
-{
-	font-family: Arial;
+	width: 100%;
+	text-align: right;
+	font-family: Futura, Arial;
 	font-style: italic;
+	background-color: #FF7700;
+	border-top: 2px solid #000000;
+}
+#cpy
+{
+	margin-right: 10px;
 }

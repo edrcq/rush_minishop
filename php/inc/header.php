@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title><?php echo $pageTitle; ?> - Minishop</title>
     <link href="./css/main.css" rel="stylesheet" />
+    <link href="./css/menu.css" rel="stylesheet" />
     <link href="./css/header.css" rel="stylesheet" />
     <link href="./css/footer.css" rel="stylesheet" />
     <link href="./css/page.css" rel="stylesheet" />
