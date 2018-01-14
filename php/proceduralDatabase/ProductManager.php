@@ -135,7 +135,7 @@
 		}
 		$sq = trim($sq, ',');
 		$stmt = mysqli_prepare($mysqli, $sq);
-		mysqli_stmt_bind_param($stmt, 'sss', $tmp[0] ? $name['name'] : NULL, $tmp[1] ? $col['color'] : NULL, $tmp[2] ? $cat['category'] : NULL);
+		mysqli_stmt_bind_param($stmt, 'sss', $name['name'], $col['color'], $cat['category']);
 		mysqli_execute($stmt);
 		mysqli_stmt_bind_result($stmt, $id, $name, $cat, $col, $desc, $st, $jd, $img, $pr);
 		while (mysqli_stmt_fetch($stmt))
