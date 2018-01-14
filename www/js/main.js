@@ -41,7 +41,7 @@ function cartSave() {
 if (window.location.href.indexOf('cart') > -1) {
     console.log(Cart);
     var cartDiv = document.getElementById('cart');
-    for (id in Cart) {
+    for (id in Cart.list) {
         var item = document.createElement("div");
         var itemName = document.createElement("div");
         var itemPrice = document.createElement("div");
