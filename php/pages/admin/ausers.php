@@ -26,7 +26,7 @@
 		<tr><form action="ajax/addUser.php" method=POST>
 			<td><input type="text" disabled name="id" form="user" value=""/></td>
 			<td><input type="text" name="email" form="user" value=""/></td>
-			<td><input type="text" name="password" form="user" value=""/></td>
+			<td><input type="password" name="password" form="user" value=""/></td>
 			<td><input type="text" name="role"  value=""/></td>
 			<td><input type="text" disabled name="r_date"  value=""/></td>
 			<td><input type="text" disabled name="j_data"  value=""/></td>
