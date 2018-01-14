@@ -9,7 +9,7 @@
         $bindBool = mysqli_stmt_bind_param($stmt, 'sssss', $order['list'], $order['total'], $order['nb'], $order['jsondata'], $order['status']);
         mysqli_stmt_execute($stmt);
 
-        return (mysqli_insert_id($mysqli));
+        return (mysqli_stmt_insert_id($stmt));
     }
 
     // Supprimer une commande
