@@ -57,4 +57,10 @@ if (window.location.href.indexOf('cart') > -1) {
         item.appendChild(itemQuantity);
         cartDiv.appendChild(item);
     }
+    var nbItem = document.createElement("div");
+    nbItem.appendChild(document.createTextNode(Cart.nb));
+    var totalCart = document.createElement("div");
+    totalCart.appendChild(document.createTextNode(Cart.total));
+    cartDiv.appendChild(nbItem);
+    cartDiv.appendChild(totalCart);
 }
