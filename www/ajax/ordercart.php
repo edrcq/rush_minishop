@@ -9,7 +9,7 @@ if (empty($_SESSION['connected'])) {
     die();
 }
 if (!isset($_POST['cartData'])) {
-    $_SESSION['error'] = ['from' => 'cart', 'message' => 'Empty cart...'];
+    $_SESSION['error'] = ['from' => 'cart', 'message' => 'Empty cart... 0'];
     header('Location: ../index.php?p=cart');
     die();
 }
@@ -23,8 +23,8 @@ if (json_last_error() !== JSON_ERROR_NONE) {
     die();
 }
 
-if (!(isset($data['list']) && count($data['list']) !== 0)) {
-    $_SESSION['error'] = ['from' => 'cart', 'message' => 'Empty cart...'];
+if (!isset($data['list']) || count($data['list']) == 0) {
+    $_SESSION['error'] = ['from' => 'cart', 'message' => 'Empty cart... 1'];
     header('Location: ../index.php?p=cart');
     die();
 }
@@ -47,7 +47,7 @@ foreach ($data['list'] as $id => $item) {
 }
 
 if (count($list) || $total == 0 || $nb == 0) {
-    $_SESSION['error'] = ['from' => 'cart', 'message' => 'Empty cart...'];
+    $_SESSION['error'] = ['from' => 'cart', 'message' => 'Empty cart... 2'];
     header('Location: ../index.php?p=cart');
     die();
 }
