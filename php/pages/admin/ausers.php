@@ -24,12 +24,12 @@
 			<td><form action="ajax/deleteUser.php" method=POST><input type="hidden" name="id" form="user" value="<?php echo $idx['id']; ?>"/><input type="submit" value="Delete" name="del"/></form></td>
 			<?php echo '</tr>';} ?>
 		<tr><form action="ajax/addUser.php" method=POST>
-			<td><input type="text" disabled name="id" form="user" value=""/></td>
+			<td><input type="text" disabled name="id" form="user" placeholder="AUTO"/></td>
 			<td><input type="text" name="email" form="user" value=""/></td>
 			<td><input type="password" name="password" form="user" value=""/></td>
 			<td><input type="text" name="role"  value=""/></td>
-			<td><input type="text" disabled name="r_date"  value=""/></td>
-			<td><input type="text" disabled name="j_data"  value=""/></td>
+			<td><input type="text" disabled name="r_date"  placeholder="AUTO"/></td>
+			<td><input type="text" disabled name="j_data"  placeholder="Unavaible"/></td>
 			<td><input type="submit" value="Add" /></td></form>
 		</tr>
 	</table>

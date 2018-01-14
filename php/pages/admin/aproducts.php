@@ -31,13 +31,13 @@
 		<?php echo '</tr>';} ?>
 		<tr><form action="ajax/addProduct.php" method="post" >
 			<td><img src="http://chestnutglobalpartners.in/wp-content/uploads/2017/06/placeholder.png" /><!--<?php echo $idx['img']; ?>--></td>
-			<td><input type="text" name="id"  value=""/></td>
+			<td><input type="text" name="id"  placeholder="AUTO ID"/></td>
 			<td><input type="text" name="name"  value=""/></td>
 			<td><input type="text" name="category"  value=""/></td>
 			<td><input type="text" name="color" value=""/></td>
 			<td><input type="text" name="description"  value=""/></td>
 			<td><input type="text" name="stock" value=""/></td>
-			<td><input type="text" name="jsondata"  value=""/></td>
+			<td><input type="text" name="jsondata" disabled placeholder="Unavaible"/></td>
 			<td><input type="text" name="price"  value=""/></td>
 			<td><input type="submit" name="add" id="add" value="Add" /></td></form>
 		</tr>
