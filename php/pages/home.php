@@ -5,16 +5,16 @@
 		<hr />
 		<div id="showcase">
 			<div class="item">
-				<img src="../media/iphone-x.png" alt="iphone-x">
+				<img src="./media/iphone-x.png" alt="iphone-x">
 			</div>
 			<div class="item">
-				<img src="../media/oneplus-5t.png" alt="oneplus-5t">
+				<img src="./media/oneplus-5t.png" alt="oneplus-5t">
 			</div>
 			<div class="item">
-				<img src="../media/lightsaber.png" alt="lightsaber">
+				<img src="./media/lightsaber.png" alt="lightsaber">
 			</div>
 			<div class="item">
-				<img src="../media/hhkb.png" alt="hhkb">
+				<img src="./media/hhkb.png" alt="hhkb">
 			</div>
 		</div>
 		<hr />
