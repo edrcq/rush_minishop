@@ -25,9 +25,6 @@ if (isset($_POST['name']) && isset($_POST['key'])) {
     file_put_contents(__DIR__ . '/../../php/conf/categories.json', json_encode($categories));
 }
 
-header('Location: ../index.php?p=aproducts');
-die();
-
 header('Location: ../index.php?p=acat');
 die();
 

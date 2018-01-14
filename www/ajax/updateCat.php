@@ -30,6 +30,7 @@ if (isset($_POST['name']) && isset($_POST['key']) && isset($_POST['id'])) {
                 'name' => $_POST['name']
             ];
         }
+        file_put_contents(__DIR__ . '/../../php/conf/categories.json', json_encode($categories));
     }
 }
 

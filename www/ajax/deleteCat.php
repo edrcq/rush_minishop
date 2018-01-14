@@ -26,6 +26,7 @@ if (isset($_POST['id'])) {
         if ($find) {
             unset($categories[$n]);
         }
+        file_put_contents(__DIR__ . '/../../php/conf/categories.json', json_encode($categories));
     }
 }
 
