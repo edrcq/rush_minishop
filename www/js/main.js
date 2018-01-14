@@ -15,7 +15,7 @@ function cartAddProduct(id, name, quantity, price) {
     Cart.list[id] = {
         name: name,
         quantity: quantity,
-        price: price
+        price: parseFloat(price).toFixed(2);
     };
     Cart.nb++;
     cartCalcTotal();
@@ -24,9 +24,9 @@ function cartAddProduct(id, name, quantity, price) {
 function cartCalcTotal() {
     var total = 0.00;
     for (id in Cart.list) {
-        total += Cart.list[id].price;
+        total += parseFloat(Cart.list[id].price);
     }
-    Cart.total = total;
+    Cart.total = total.toFixed(2);
     cartSave();
 }
 
