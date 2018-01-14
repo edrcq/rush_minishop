@@ -31,7 +31,6 @@
 			{
 				$produ = $p;
 			}
-			file_put_contents('/tmp/prod', json_encode($p));
             return ($produ);
         }
         return (false);
