@@ -6,7 +6,7 @@
         
         $stmt = mysqli_prepare($mysqli, 'INSERT INTO orders SET list = ?, total = ?, nb = ?, order_date = NOW(), jsondata = ?, status = ?');
 
-        $bindBool = mysqli_stmt_bind_param($stmt, 'sssss', $order['list'], $order['total'], $order['nb'], $order['jsondata'], $order['status']);
+        $bindBool = mysqli_stmt_bind_param($stmt, 'sdiss', $order['list'], $order['total'], $order['nb'], $order['jsondata'], $order['status']);
         mysqli_stmt_execute($stmt);
 
         return (mysqli_stmt_insert_id($stmt));
@@ -18,7 +18,7 @@
         
         $stmt = mysqli_prepare($mysqli, 'DELETE FROM orders WHERE id = ?');
         
-        $bindBool = mysqli_stmt_bind_param($stmt, 'd', $id);
+        $bindBool = mysqli_stmt_bind_param($stmt, 'i', $id);
         mysqli_stmt_execute($stmt);
 
         return (true);
@@ -32,7 +32,7 @@
             
             $stmt = mysqli_prepare($mysqli, 'SELECT * FROM orders WHERE id = ?');
     
-            $bindBool = mysqli_stmt_bind_param($stmt, 'd', $id);
+            $bindBool = mysqli_stmt_bind_param($stmt, 'i', $id);
 
             mysqli_stmt_execute($stmt);
 
@@ -66,7 +66,7 @@
         
         $stmt = mysqli_prepare($mysqli, 'UPDATE orders SET list = ?, total = ?, nb = ?, jsondata = ?, status = ? WHERE id = ?');
 
-        $bindBool = mysqli_stmt_bind_param($stmt, 'sssssd', $order['passlistword'], $order['total'], $order['nb'], $order['jsondata'], $order['status'] ,$order['id']);
+        $bindBool = mysqli_stmt_bind_param($stmt, 'sssssi', $order['passlistword'], $order['total'], $order['nb'], $order['jsondata'], $order['status'] ,$order['id']);
         mysqli_stmt_execute($stmt);
 
         return (mysqli_affected_rows($mysqli));
