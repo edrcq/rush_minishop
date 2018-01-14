@@ -27,10 +27,8 @@ if (isset($_POST['name']) && isset($_POST['category']) && isset($_POST['color'])
     $prod['price'] = floatval($_POST['price']);
     $pid = ProductManagerAdd($prod);
 }
-var_dump($_POST);
-var_dump($prod);
-var_dump($pid);
 
-//header('Location: ../index.php?p=aproducts');
+
+header('Location: ../index.php?p=aproducts');
 die();
 ?>
