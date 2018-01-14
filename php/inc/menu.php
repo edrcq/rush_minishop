@@ -12,7 +12,7 @@
         <li><a href="?p=register">Register</a></li>
         <li><a href="?p=login">Login</a></li>
         <?php } else { ?>
-        <li><a href="?p=account">My account</a></li>
+        <li><a href="?p=myaccount">My account</a></li>
         <li><a href="logout.php">Logout</a></li>
         <?php } ?>
     </ul>
