@@ -27,7 +27,7 @@
 			<td><input type="text" name="jsondata"  value="<?php echo $idx['jsondata']; ?>"</td>
 			<td><input type="text" name="price"  value="<?php echo $idx['price']; ?>"</td>
 			<td><input type="submit" name="update" id="update_<?php echo $idx['id']; ?>" value="Update" /></td></form>
-			<td><input type="submit" name="delete" id="delete_<?php echo $idx['id']; ?>" value="Delete" /></td>
+			<td><form action="ajax/deleteProduct.php" method="post"><input type="hidden" value="<?php echo $idx['id']; ?>" name="id" /><input type="submit" name="delete" id="delete_<?php echo $idx['id']; ?>" value="Delete" /></form></td>
 		<?php echo '<tr>';} ?>
 	</table>
 </div>
