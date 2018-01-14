@@ -11,8 +11,8 @@ if (!isset($_SESSION['admin']) || $_SESSION['admin'] === false) {
     header('Location: ../index.php?p=home');
     die();
 }
-var_dump($_POST);
-$aff_row = ProductManagerUpdate($_POST);
+if (isset($_POST['id']) && filter_var($_POST['id'], FILTER_VALIDATE_INT))
+    $aff_row = ProductManagerDelete($_POST['id']);
 
 header('Location: ../index.php?p=aproducts');
 die();

@@ -92,9 +92,13 @@ function printCartOnPage() {
                 continue ;
             }
             var item = document.createElement("div");
+            item.classList.add('item');
             var itemName = document.createElement("div");
+            itemName.classList.add('itemName');
             var itemPrice = document.createElement("div");
+            itemPrice.classList.add('itemPrice');
             var itemQuantity = document.createElement("div");
+            itemQuantity.classList.add('itemQuantity');
             var textPrice = document.createTextNode(Cart.list[id].price);
             var textName = document.createTextNode(Cart.list[id].name);
             var textQuantity = document.createTextNode(Cart.list[id].quantity);
@@ -110,7 +114,9 @@ function printCartOnPage() {
         }
         var nbItem = document.createElement("div");
         nbItem.appendChild(document.createTextNode(Cart.nb));
+        nbItem.classList.add('nbItem');
         var totalCart = document.createElement("div");
+        totalCart.classList.add('totalCart');
         totalCart.appendChild(document.createTextNode(Cart.total));
         cartDiv.appendChild(nbItem);
         cartDiv.appendChild(totalCart);
