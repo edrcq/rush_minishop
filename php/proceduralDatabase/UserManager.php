@@ -16,7 +16,7 @@
         $bindBool = mysqli_stmt_bind_param($stmt, 'ssss', $account['password'], $account['email'], $account['role'], $account['jsondata']);
         mysqli_stmt_execute($stmt);
 
-        return (mysqli_insert_id($mysqli));
+        return (mysqli_stmt_insert_id($stmt));
     }
 
     // Supprimer un utilisateur

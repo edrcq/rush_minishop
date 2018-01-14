@@ -4,32 +4,34 @@
 
 		$stmt = mysqli_prepare($mysqli, 'INSERT INTO products SET name = ?, color = ?, price = ?, img = ?, stock = ?, description = ?, category = ?, jsondata = ?');
 		mysqli_stmt_bind_param($stmt, 'ssssss', $p['name'], $p['color'], $p['price'], $p['img'], $p['stock'], $p['description'], $p['category'], $p['jsondata']);
-		mysqli_execute($stmt);
-        return (mysqli_insert_id($mysqli));
+		mysqli_stmt_execute($stmt);
+        return (mysqli_stmt_insert_id($stmt));
     }
 
     function ProductManagerDelete($product) {
 		global $mysqli;
 
 		$stmt = mysqli_prepare($mysqli, 'DELETE FROM products WHERE id = ?');
-		mysqli_stmt_bind_param($stmt, 's', $p['id']);
-		mysqli_execute($stmt);
+		mysqli_stmt_bind_param($stmt, 'd', $p['id']);
+		mysqli_stmt_execute($stmt);
         return (mysqli_affected_rows($mysqli));
     }
 
     function ProductManagerGet($id) {
 		global $mysqli;
 
-        if($id = filter_var($id,FILTER_VALIDATE_INT))
+        if($id = filter_var($id, FILTER_VALIDATE_INT))
         {
 			$stmt = mysqli_prepare($mysqli, 'SELECT * FROM products WHERE id = ?');
-			mysqli_stmt_bind_param($stmt, 's', $id['id']);
-			mysqli_execute($stmt);
+			mysqli_stmt_bind_param($stmt, 'd', $id);
+			mysqli_stmt_execute($stmt);
 			mysqli_stmt_bind_result($stmt, $p['id'], $p['name'], $p['category'], $p['color'], $p['description'], $p['stock'], $p['jsondata'], $p['img'], $p['price']);
+			$produ = [];
 			while (mysqli_stmt_fetch($stmt))
 			{
+				$produ = $p;
 			}
-            return ($p);
+            return ($produ);
         }
         return (false);
     }
@@ -51,7 +53,7 @@
 
 		$stmt = mysqli_prepare($mysqli, 'SELECT * FROM products WHERE category = ?');
 		mysqli_stmt_bind_param($stmt, 's', $cat);
-		mysqli_execute($stmt);
+		mysqli_stmt_execute($stmt);
 		mysqli_stmt_bind_result($stmt, $id, $name, $cat, $col, $desc, $st, $jd, $img, $pr);
 		while (mysqli_stmt_fetch($stmt))
 			$p[] = ['id' => $id, 'name' => $name, 'category' => $cat, 'color' => $col, 'description' => $desc, 'stock' => $st, 'jsondata' => $jd, 'img' => $img, 'price' => $pr];
@@ -74,7 +76,7 @@
 		global $mysqli;
 
 		$stmt = mysqli_prepare($mysqli, 'SELECT * FROM products');
-		mysqli_execute($stmt);
+		mysqli_stmt_execute($stmt);
 		mysqli_stmt_bind_result($stmt, $id, $name, $cat, $col, $desc, $st, $jd, $img, $pr);
 		while (mysqli_stmt_fetch($stmt))
 			$p[] = ['id' => $id, 'name' => $name, 'category' => $cat, 'color' => $col, 'description' => $desc, 'stock' => $st, 'jsondata' => $jd, 'img' => $img, 'price' => $pr];
@@ -158,9 +160,12 @@
     function ProductManagerUpdate($p) {
 		global $mysqli;
 
-		$stmt = mysqli_prepare($mysqli, 'UPDATE product SET name = ?, category = ?, color = ?, description = ?, stock = ?, jsondata = ?, img = ?, price = ? WHERE id = ?');
-		mysqli_stmt_bind_param($stmt, 'ssssssss', $p['name'], $p['category'], $p['color'], $p['description'], $p['stock'], $p['jsondata'], $p['img'], $p['price'], $p['id']);
-		mysqli_execute($stmt);
+		$p['img'] = '';
+		$price = floatval($p['price']);
+		$id = intval($p['id']);
+		$stmt = mysqli_prepare($mysqli, 'UPDATE products SET name = ?, category = ?, color = ?, description = ?, stock = ?, jsondata = ?, img = ?, price = ? WHERE id = ?');
+		mysqli_stmt_bind_param($stmt, 'sssssssdi', $p['name'], $p['category'], $p['color'], $p['description'], $p['stock'], $p['jsondata'], $p['img'], $price, $id);
+		mysqli_stmt_execute($stmt);
         return (mysqli_affected_rows($mysqli));
     }
 ?>
