@@ -24,6 +24,6 @@
 			<td><input type="text" name="status"  value="<?php echo $idx['status']; ?>"/></td>
 			<td><input type="submit" value="Update" /></td></form>
 			<td><form action="ajax/deleteOrder.php" method="POST"><input type="hidden" name="id" value="<?php echo $idx['id']; ?>"/><input type="submit" value="Delete" /></form></td>
-		<?php echo '<tr>';} ?>
+		<?php echo '</tr>';} ?>
 	</table>
 </div>

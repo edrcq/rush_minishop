@@ -28,7 +28,7 @@
 			<td><input type="text" name="price"  value="<?php echo $idx['price']; ?>"/></td>
 			<td><input type="submit" name="update" id="update_<?php echo $idx['id']; ?>" value="Update" /></td></form>
 			<td><form action="ajax/deleteProduct.php" method="post"><input type="hidden" value="<?php echo $idx['id']; ?>" name="id" /><input type="submit" name="delete" id="delete_<?php echo $idx['id']; ?>" value="Delete" /></form></td>
-		<?php echo '<tr>';} ?>
+		<?php echo '</tr>';} ?>
 		<tr><form action="ajax/addProduct.php" method="post" >
 			<td><img src="http://chestnutglobalpartners.in/wp-content/uploads/2017/06/placeholder.png" /><!--<?php echo $idx['img']; ?>--></td>
 			<td><input type="text" name="id"  value=""/></td>
@@ -39,7 +39,7 @@
 			<td><input type="text" name="stock" value=""/></td>
 			<td><input type="text" name="jsondata"  value=""/></td>
 			<td><input type="text" name="price"  value=""/></td>
-			<td><input type="submit" name="update" id="add" value="Add" /></td></form>
+			<td><input type="submit" name="add" id="add" value="Add" /></td></form>
 		</tr>
 	</table>
 </div>
