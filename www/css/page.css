@@ -34,3 +34,74 @@
 	border-top: 3px solid #000000;
 	border-bottom: 3px solid #000000;
 }
+.product-list
+{
+	margin: 0;
+	font-family: Futura, Arial;
+	left: 0px;
+	height: 100%;
+	width: 100%;
+}
+.product
+{
+	position: relative;
+	white-space: nowrap;
+	width: 100%;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+.product img
+{
+	margin-left: 10px;
+	margin-right: 10px;
+	height: 200px;
+	width: 200px;
+}
+.product .btn
+{
+	position: absolute;
+	top: 25%;
+	right: 20px;
+}
+.product #title
+{
+	position: absolute;
+	display: block;
+	top: 0;
+	left: 220px;
+	font-size: 3.5em;
+}
+.product #price
+{
+	position: absolute;
+	top: 0;
+	right: 20px;
+	font-size: 2em;
+}
+.product #description
+{
+	position: absolute;
+	top: 50%;
+	left: 220px;
+	font-size: 1.2em;
+	width: 80%;
+	height: 80px;
+	padding-top: 5px;
+	padding-left: 5px;
+	border: 1px;
+	border-style: solid;
+	border-color: #000000;
+	border-radius: 0px
+}
+.product #color
+{
+	position: absolute;
+	bottom: 5px;
+	left: 5px;
+}
+.product #colblock
+{
+	display: inline-block;
+	height: 25px;
+	width: 50px;
+}

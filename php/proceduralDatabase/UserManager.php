@@ -81,21 +81,12 @@
         global $mysqli;
         
         $stmt = mysqli_prepare($mysqli, 'SELECT * FROM accounts');
-        
-        $bindBool = mysqli_stmt_bind_param($stmt, 's', $email);
-
         mysqli_stmt_execute($stmt);
-        
-        $users = [];
-        $user = [];
-
-        mysqli_stmt_bind_result($stmt, $user['id'], $user['email'], $user['password'], $user['role'], $user['registration_date'], $user['jsondata']);
-
+        mysqli_stmt_bind_result($stmt, $id, $email, $pw, $role, $d, $jd);
         while (mysqli_stmt_fetch($stmt)) {
-            $users[] = $user;
+			$u[] = ['id' => $id, 'email' => $email, 'password' => $pw, 'role' => $role, 'registration_date' => $d, 'jsondata' => $jd];
         }
-
-        return ($users);
+        return ($u);
     }
 
     // 

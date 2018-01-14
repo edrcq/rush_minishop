@@ -1,0 +1,20 @@
+.admin
+{
+}
+.admin img
+{
+	max-height: 100px;
+	max-width: 100px;
+}
+.admin input
+{
+	height: 50px;
+}
+table
+{
+	height: 100%;
+}
+table th
+{
+	border: 2px solid black;
+}

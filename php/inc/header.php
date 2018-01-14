@@ -10,6 +10,7 @@
     <link href="./css/header.css" rel="stylesheet" />
     <link href="./css/footer.css" rel="stylesheet" />
     <link href="./css/page.css" rel="stylesheet" />
+    <link href="./css/admin.css" rel="stylesheet" />
 </head>
 <body>
 	<div class="panel top">

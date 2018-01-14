@@ -9,3 +9,26 @@
 	background-color: #FF7700;
 	font-family: Futura, Arial;
 }
+#abtn
+{
+	margin-top: 5px;
+	margin-left: 10px;
+}
+.btn
+{
+	font-size: 15px;
+	border: 1px;
+	border-style: solid;
+	border-color: #000000;
+	border-radius: 0px;
+	background-color: #FF7700;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+.btn:active
+{
+	color: white;
+	background-color: black;
+}

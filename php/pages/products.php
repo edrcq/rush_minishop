@@ -12,8 +12,6 @@
 ?>
 
 <div class="container">
-    <?php echo 'Category Name : ' . $catName; ?>
-    <?php echo '<br />Category value : ' . $cat; ?>
     <?php 
         $products = [];
         if ($cat == 'all') {
@@ -23,25 +21,27 @@
             $products = ProductManagerGetByCategory($cat);
         }
     ?>
+    <?php 
+        if ($isAdmin === true) {
+            echo '<button class="btn" id="abtn">Ajouter un produit</button>';
+        }
+    ?>
     <br />
     <div class="product-list">
         <?php 
         foreach ($products as $product) {
             ?>
             <div class="product">
-                <h3 class="product-name"><?php echo $product['name']; ?></h3>
-                <span class="product-desc"><?php echo $product['description']; ?></span>
-                <span class="product-desc"><?php echo $product['price']; ?></span>
-                <button class="btn btn-buy" onclick="cartAddProduct('<?php echo $product['id']; ?>', '<?php echo $product['name']; ?>', 1, '<?php echo $product['price']; ?>')">Add 1 to cart</span>
+				<img src="http://chestnutglobalpartners.in/wp-content/uploads/2017/06/placeholder.png" alt="img"/>
+                <div id="title"><?php echo $product['name']; ?></div>
+                <div id="description"><?php echo $product['description']; ?><div id="color">Color: <span id="colblock" style="background-color: <?php echo $product['color'];?>">&nbsp;</span></div></div>
+                <div id="price">$<?php echo $product['price']; ?></div>
+				
+                <button class="btn" onclick="cartAddProduct('<?php echo $product['id']; ?>', '<?php echo $product['name']; ?>', 1, '<?php echo $product['price']; ?>')">Add 1 to cart</span>
 
             </div>
             <?php 
         }
         ?>
     </div>
-    <?php 
-        if ($isAdmin === true) {
-            echo '<button class="btn">Ajouter un produit</button>';
-        }
-    ?>
 </div>
