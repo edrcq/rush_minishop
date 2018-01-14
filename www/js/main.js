@@ -36,7 +36,6 @@ function renderCart() {
 
 function cartSave() {
     localStorage.setItem('mycart', JSON.stringify(Cart));
-    renderCart();
 }
 
 function buyCart() {
@@ -67,6 +66,7 @@ function removeOneItem(id) {
     Cart.list[id].quantity = quantity;
     Cart.nb++;
     cartCalcTotal();
+    printCartOnPage();
 }
 
 function createRemoveBtn(id) {
