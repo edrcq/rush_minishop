@@ -74,7 +74,6 @@
 		global $mysqli;
 
 		$stmt = mysqli_prepare($mysqli, 'SELECT * FROM products');
-		mysqli_stmt_bind_param($stmt, 's', $name['name']);
 		mysqli_execute($stmt);
 		mysqli_stmt_bind_result($stmt, $id, $name, $cat, $col, $desc, $st, $jd, $img, $pr);
 		while (mysqli_stmt_fetch($stmt))

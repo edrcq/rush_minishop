@@ -32,7 +32,7 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
     $_SESSION['connected'] = true;
     $_SESSION['admin'] = false;
 
-    if ($user->role > 1) {
+    if ($user['role'] > 1) {
         $_SESSION['admin'] = true;
     }
 
