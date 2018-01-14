@@ -66,7 +66,7 @@
         
         $stmt = mysqli_prepare($mysqli, 'UPDATE orders SET list = ?, total = ?, nb = ?, jsondata = ?, status = ? WHERE id = ?');
 
-        $bindBool = mysqli_stmt_bind_param($stmt, 'sssssi', $order['passlistword'], $order['total'], $order['nb'], $order['jsondata'], $order['status'] ,$order['id']);
+        $bindBool = mysqli_stmt_bind_param($stmt, 'sssssi', $order['list'], $order['total'], $order['nb'], $order['jsondata'], $order['status'] ,$order['id']);
         mysqli_stmt_execute($stmt);
 
         return (mysqli_affected_rows($mysqli));
