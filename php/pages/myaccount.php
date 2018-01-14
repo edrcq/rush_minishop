@@ -18,13 +18,27 @@ if (!$connected) {
 				</div>
 			<button type="submit" class="btn">Update my informations</button><br />
 			</form>
-		<button type="submit" class="btn">Delete my account</button>
+		<button type="submit" class="btn">Delete my account</button><br />
+	<span class="acctext">Orders history</span><br />
+	<table>
+		<?php
+			$p = OrderManagerGetAll();
+			foreach ($p as $idx) {
+				if ($idx['uid'] === $user['id']) {
+						echo '<tr><td>'.$idx['id'].'</td>';
+						echo '<td>'.$idx['list'].'</td>';
+						echo '<td>'.$idx['total'].'</td>';
+						echo '<td>'.$idx['nb'].'</td>';
+						echo '<td>'.$idx['order_date'].'</td>';
+						echo '<td>'.$idx['jsondata'].'</td>';
+						echo '<td>'.$idx['status'].'</td><tr>';
+				}
+			} ?>
+	</table>
 	</div>
 		<?php
 			if ($isAdmin === true)
 			{
-				echo '<div class="account" id="apanel"><br /><hr /><br /><span class="acctext">Admin panel</span><br /><a href="?p=ausers" class="btn">Users</a><a href="?p=aproducts" class="btn">Products</a><a href="?p=aord" class="btn">Orders</a><a href="?p=addproduct" class="btn">Add a product</a></div>';
+				echo '<div class="account" id="apanel"><br /><hr /><br /><span class="acctext">Admin panel</span><br /><a href="?p=ausers" class="btn">Users</a><a href="?p=aproducts" class="btn">Products</a><a href="?p=aord" class="btn">Orders</a></div>';
 			} ?>
 </div>
-
-?>

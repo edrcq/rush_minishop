@@ -15,4 +15,4 @@ if (isset($_SESSION['error'])) {
         <button type="submit" class="btn"  onclick="buyCart">Order !</button>
     </form>
     <button class="btn" onclick="cleanCart">Clean cart</button>
-<div>
+</div>
