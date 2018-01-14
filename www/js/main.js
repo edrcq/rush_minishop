@@ -36,6 +36,7 @@ function renderCart() {
 
 function cartSave() {
     localStorage.setItem('mycart', JSON.stringify(Cart));
+    renderCart();
 }
 
 function buyCart() {
