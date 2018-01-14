@@ -1,4 +1,4 @@
-<?php $p = ProductManagerGetAll(); ?>
+<?php $p = OrderManagerGetAll(); ?>
 <div class="admin"> 
 	<table>	
 		<tr>

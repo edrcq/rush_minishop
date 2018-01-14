@@ -161,7 +161,7 @@
 		global $mysqli;
 
 		$stmt = mysqli_prepare($mysqli, 'UPDATE product SET name = ?, category = ?, color = ?, description = ?, stock = ?, jsondata = ?, img = ?, price = ? WHERE id = ?');
-		mysqli_stmt_bind_param($stmt, 'ssssssss', $p['name'], $p['category'], $p['color'], $p['description'], $p['stock'], $p['jsondata'], $p['img'], $p['price'], $p['id']);
+		mysqli_stmt_bind_param($stmt, 'sssssssdi', $p['name'], $p['category'], $p['color'], $p['description'], $p['stock'], $p['jsondata'], $p['img'], $p['price'], $p['id']);
 		mysqli_stmt_execute($stmt);
         return (mysqli_affected_rows($mysqli));
     }

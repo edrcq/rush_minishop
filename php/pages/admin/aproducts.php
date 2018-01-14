@@ -16,7 +16,7 @@
 		<?php
 			foreach ($p as $idx) {
 				echo '<tr>';
-		?><form action="ajax/updateProduct.php" method="post">
+		?><form action="ajax/updateProduct.php" method="post" >
 			<td><img src="http://chestnutglobalpartners.in/wp-content/uploads/2017/06/placeholder.png" /><!--<?php echo $idx['img']; ?>--></td>
 			<td><input type="text" name="id" form="product" value="<?php echo $idx['id']; ?>"</td>
 			<td><input type="text" name="name" form="product" value="<?php echo $idx['name']; ?>"</td>
@@ -26,8 +26,9 @@
 			<td><input type="text" name="stock" form="product" value="<?php echo $idx['stock']; ?>"</td>
 			<td><input type="text" name="jsondata" form="product" value="<?php echo $idx['jsondata']; ?>"</td>
 			<td><input type="text" name="price" form="product" value="<?php echo $idx['price']; ?>"</td>
-			<td><input type="submit" name="update" id="update_<?php echo $idx['id']; ?>" value="Update" onclick="updateProduct(<?php echo $idx['id']; ?>)" /></td>
-			<td><input type="submit" name="delete" id="delete_<?php echo $idx['id']; ?>" value="Delete" onclick="deleteProduct(<?php echo $idx['id']; ?>)" /></td></form>
+			<td><input type="submit" name="update" id="update_<?php echo $idx['id']; ?>" value="Update" /></td></form>
+			<td><input type="submit" name="delete" id="delete_<?php echo $idx['id']; ?>" value="Delete" /></td>
 		<?php echo '<tr>';} ?>
 	</table>
 </div>
+<script src="a.js"></script>
