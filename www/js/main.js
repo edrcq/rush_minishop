@@ -72,7 +72,7 @@ function removeOneItem(id) {
 function createRemoveBtn(id) {
     var btn = document.createElement('button');
     btn.classList.add('btn-rem')
-    btn.onclick = removeOneItem(id);
+    btn.onclick = function() { removeOneItem(id); };
     btn.appendChild(document.createTextNode('-1'));
     return (btn);
 }
