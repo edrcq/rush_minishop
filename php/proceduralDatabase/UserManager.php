@@ -11,6 +11,10 @@
     function UserManagerAdd($account) {
         global $mysqli;
 
+        if (count(UserManagerGetByEmail($account['email'])) > 0) {
+            return (false);
+        }
+
         $stmt = mysqli_prepare($mysqli, 'INSERT INTO accounts SET password = ?, email = ?, role = ?, registration_date = NOW(), jsondata = ?');
 
         $bindBool = mysqli_stmt_bind_param($stmt, 'ssss', $account['password'], $account['email'], $account['role'], $account['jsondata']);
