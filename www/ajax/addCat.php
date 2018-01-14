@@ -27,4 +27,8 @@ if (isset($_POST['name']) && isset($_POST['key'])) {
 
 header('Location: ../index.php?p=aproducts');
 die();
+
+header('Location: ../index.php?p=acat');
+die();
+
 ?>

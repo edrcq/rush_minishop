@@ -33,4 +33,7 @@ if (isset($_POST['name']) && isset($_POST['key']) && isset($_POST['id'])) {
     }
 }
 
+header('Location: ../index.php?p=acat');
+die();
+
 ?>
