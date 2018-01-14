@@ -59,7 +59,7 @@ $order['total'] = $total;
 $order['nb'] = $nb;
 $order['status'] = "Pending confirmation";
 
-$order_id = $OrderManagerAdd($order);
+$order_id = OrderManagerAdd($order);
 
 if (intval($order_id) > 0) {
     $_SESSION['order'] = ['from' => 'cart', 'message' => 'Your order is placed!'];
