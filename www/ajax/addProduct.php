@@ -16,7 +16,7 @@ $prod = [
     'jsondata' => ''
 ];
 
-if (isset($_POST['name']) && isset($_POST['category']) && isset($_POST['color']) && isset($_POST['description']) && isset($_POST['stcok']) && isset($_POST['price'])) {
+if (isset($_POST['name']) && isset($_POST['category']) && isset($_POST['color']) && isset($_POST['description']) && isset($_POST['stock']) && isset($_POST['price'])) {
     echo 'ok';
     $prod['name'] = $_POST['name'];
     $prod['category'] = $_POST['category'];
