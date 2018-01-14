@@ -71,7 +71,6 @@
 
         $bindBool = mysqli_stmt_bind_param($stmt, 'sdissi', $order['list'], $total, $nb, $order['jsondata'], $order['status'], $id);
 
-        var_dump($bindBool);
         mysqli_stmt_execute($stmt);
 
         return (mysqli_affected_rows($mysqli));

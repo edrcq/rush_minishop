@@ -12,7 +12,7 @@ if (!isset($_SESSION['admin']) || $_SESSION['admin'] === false) {
     die();
 }
 var_dump($_POST);
-$aff_row = ProductManagerUpdate($_POST);
+$aff_row = OrderManagerUpdate($_POST);
 var_dump($aff_row);
 //header('Location: ../index.php?p=aord');
 die();
