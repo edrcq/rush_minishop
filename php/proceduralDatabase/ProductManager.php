@@ -3,7 +3,7 @@
 		global $mysqli;
 
 		$stmt = mysqli_prepare($mysqli, 'INSERT INTO products SET name = ?, color = ?, price = ?, img = ?, stock = ?, description = ?, category = ?, jsondata = ?');
-		mysqli_stmt_bind_param($stmt, 'ssssss', $p['name'], $p['color'], $p['price'], $p['img'], $p['stock'], $p['description'], $p['category'], $p['jsondata']);
+		mysqli_stmt_bind_param($stmt, 'ssdsisss', $p['name'], $p['color'], $p['price'], $p['img'], $p['stock'], $p['description'], $p['category'], $p['jsondata']);
 		mysqli_stmt_execute($stmt);
         return (mysqli_stmt_insert_id($stmt));
     }

@@ -13,7 +13,8 @@ if (!isset($_SESSION['admin']) || $_SESSION['admin'] === false) {
 }
 
 $prod = [
-    'jsondata' => ''
+    'jsondata' => '',
+    'img' => ''
 ];
 
 if (isset($_POST['name']) && isset($_POST['category']) && isset($_POST['color']) && isset($_POST['description']) && isset($_POST['stock']) && isset($_POST['price'])) {
