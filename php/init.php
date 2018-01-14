@@ -10,8 +10,8 @@ $categories = json_decode(file_get_contents(__DIR__ . "/conf/categories.json"), 
 include_once('conf/db.php');
 
 /* Authorized pages */
-$pages = ['login', 'register', 'logout', 'home', 'products', 'cart'];
-$pages_admin = ['products', 'users', 'categories'];
+$pages = ['login', 'register', 'logout', 'home', 'products', 'cart', 'myaccount', 'orderplaced'];
+$pages_admin = ['products', 'users', 'categories', 'orders'];
 
 /* Loading Objects */
 $objectsPath = __DIR__ . '/objects';
@@ -33,5 +33,6 @@ foreach (scandir($managersPath) as $filename) {
 
 $UserManager = new UserManager($db);
 $ProductManager = new ProductManager($db);
+$OrderManager = new ProductManager($db);
 
 ?>

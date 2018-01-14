@@ -43,9 +43,10 @@ class OrderManager {
             $q->execute();
             $orderData = $q->fetch(PDO::FETCH_ASSOC);
             $order = new Order;
-            if ($orderData !== false) {
-                $order->hydrate($orderData);
+            if ($orderData === false) {
+                return (false);
             }
+            $order->hydrate($orderData);
             return ($order);
         }
         return (false);

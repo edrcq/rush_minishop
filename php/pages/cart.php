@@ -1,3 +1,9 @@
+<?php
+if (isset($_SESSION['error'])) {
+    echo '<p><strong>Error! ' . $_SESSION['error']['message'] . '</strong></p>';
+    unset($_SESSION['error']);
+}
+?>
 <div id="cart">
     
     <form action="ajax/ordercart.php" method="POST" id="cartForm">
