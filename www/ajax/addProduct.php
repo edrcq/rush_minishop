@@ -17,12 +17,13 @@ $prod = [
 ];
 
 if (isset($_POST['name']) && isset($_POST['category']) && isset($_POST['color']) && isset($_POST['description']) && isset($_POST['stcok']) && isset($_POST['price'])) {
-    if (filter_var($_POST['email'], FILTER_VALIDATE_EMAIL) !== false) {
-        $prod['email'] = $_POST['email'];
-        $prod['password'] = hash('sha512', $_POST['password']);
-        $prod['role'] = intval($_POST['role']);
-        ProductManagerAdd($user);
-    }
+    $prod['name'] = $_POST['name'];
+    $prod['category'] = $_POST['category'];
+    $prod['color'] = $_POST['color'];
+    $prod['description'] = $_POST['description'];
+    $prod['stock'] = $_POST['stock'];
+    $prod['price'] = $_POST['price'];
+    $pid = ProductManagerAdd($prod);
 }
 
 header('Location: ../index.php?p=aproducts');
