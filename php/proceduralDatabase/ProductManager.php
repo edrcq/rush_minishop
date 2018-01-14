@@ -4,7 +4,7 @@
 
 		$stmt = mysqli_prepare($mysqli, 'INSERT INTO products SET name = ?, color = ?, price = ?, img = ?, stock = ?, description = ?, category = ?, jsondata = ?');
 		mysqli_stmt_bind_param($stmt, 'ssssss', $p['name'], $p['color'], $p['price'], $p['img'], $p['stock'], $p['description'], $p['category'], $p['jsondata']);
-		mysqli_execute($stmt);
+		mysqli_stmt_execute($stmt);
         return (mysqli_insert_id($mysqli));
     }
 
@@ -13,7 +13,7 @@
 
 		$stmt = mysqli_prepare($mysqli, 'DELETE FROM products WHERE id = ?');
 		mysqli_stmt_bind_param($stmt, 'd', $p['id']);
-		mysqli_execute($stmt);
+		mysqli_stmt_execute($stmt);
         return (mysqli_affected_rows($mysqli));
     }
 
@@ -24,7 +24,7 @@
         {
 			$stmt = mysqli_prepare($mysqli, 'SELECT * FROM products WHERE id = ?');
 			mysqli_stmt_bind_param($stmt, 'd', $id['id']);
-			mysqli_execute($stmt);
+			mysqli_stmt_execute($stmt);
 			mysqli_stmt_bind_result($stmt, $p['id'], $p['name'], $p['category'], $p['color'], $p['description'], $p['stock'], $p['jsondata'], $p['img'], $p['price']);
 			$produ = [];
 			while (mysqli_stmt_fetch($stmt))
@@ -54,7 +54,7 @@
 
 		$stmt = mysqli_prepare($mysqli, 'SELECT * FROM products WHERE category = ?');
 		mysqli_stmt_bind_param($stmt, 's', $cat);
-		mysqli_execute($stmt);
+		mysqli_stmt_execute($stmt);
 		mysqli_stmt_bind_result($stmt, $id, $name, $cat, $col, $desc, $st, $jd, $img, $pr);
 		while (mysqli_stmt_fetch($stmt))
 			$p[] = ['id' => $id, 'name' => $name, 'category' => $cat, 'color' => $col, 'description' => $desc, 'stock' => $st, 'jsondata' => $jd, 'img' => $img, 'price' => $pr];
@@ -77,7 +77,7 @@
 		global $mysqli;
 
 		$stmt = mysqli_prepare($mysqli, 'SELECT * FROM products');
-		mysqli_execute($stmt);
+		mysqli_stmt_execute($stmt);
 		mysqli_stmt_bind_result($stmt, $id, $name, $cat, $col, $desc, $st, $jd, $img, $pr);
 		while (mysqli_stmt_fetch($stmt))
 			$p[] = ['id' => $id, 'name' => $name, 'category' => $cat, 'color' => $col, 'description' => $desc, 'stock' => $st, 'jsondata' => $jd, 'img' => $img, 'price' => $pr];
@@ -163,7 +163,7 @@
 
 		$stmt = mysqli_prepare($mysqli, 'UPDATE product SET name = ?, category = ?, color = ?, description = ?, stock = ?, jsondata = ?, img = ?, price = ? WHERE id = ?');
 		mysqli_stmt_bind_param($stmt, 'ssssssss', $p['name'], $p['category'], $p['color'], $p['description'], $p['stock'], $p['jsondata'], $p['img'], $p['price'], $p['id']);
-		mysqli_execute($stmt);
+		mysqli_stmt_execute($stmt);
         return (mysqli_affected_rows($mysqli));
     }
 ?>
