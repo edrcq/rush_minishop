@@ -18,14 +18,14 @@
 				echo '<tr>';
 		?><form action="ajax/updateProduct.php" method="post" >
 			<td><img src="http://chestnutglobalpartners.in/wp-content/uploads/2017/06/placeholder.png" /><!--<?php echo $idx['img']; ?>--></td>
-			<td><input type="text" name="id" form="product" value="<?php echo $idx['id']; ?>"</td>
-			<td><input type="text" name="name" form="product" value="<?php echo $idx['name']; ?>"</td>
-			<td><input type="text" name="category" form="product" value="<?php echo $idx['category']; ?>"</td>
-			<td><input type="text" name="color" form="product" value="<?php echo $idx['color']; ?>"</td>
-			<td><input type="text" name="description" form="product" value="<?php echo $idx['description']; ?>"</td>
-			<td><input type="text" name="stock" form="product" value="<?php echo $idx['stock']; ?>"</td>
-			<td><input type="text" name="jsondata" form="product" value="<?php echo $idx['jsondata']; ?>"</td>
-			<td><input type="text" name="price" form="product" value="<?php echo $idx['price']; ?>"</td>
+			<td><input type="text" name="id"  value="<?php echo $idx['id']; ?>"</td>
+			<td><input type="text" name="name"  value="<?php echo $idx['name']; ?>"</td>
+			<td><input type="text" name="category"  value="<?php echo $idx['category']; ?>"</td>
+			<td><input type="text" name="color" value="<?php echo $idx['color']; ?>"</td>
+			<td><input type="text" name="description"  value="<?php echo $idx['description']; ?>"</td>
+			<td><input type="text" name="stock" value="<?php echo $idx['stock']; ?>"</td>
+			<td><input type="text" name="jsondata"  value="<?php echo $idx['jsondata']; ?>"</td>
+			<td><input type="text" name="price"  value="<?php echo $idx['price']; ?>"</td>
 			<td><input type="submit" name="update" id="update_<?php echo $idx['id']; ?>" value="Update" /></td></form>
 			<td><input type="submit" name="delete" id="delete_<?php echo $idx['id']; ?>" value="Delete" /></td>
 		<?php echo '<tr>';} ?>
