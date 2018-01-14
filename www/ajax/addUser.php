@@ -13,7 +13,7 @@ if (!isset($_SESSION['admin']) || $_SESSION['admin'] === false) {
 }
 
 $user = newUser();
-
+var_dump($_POST);
 if (isset($_POST['email']) && isset($_POST['password']) && isset($_POST['role'])) {
     if (filter_var($_POST['email'], FILTER_VALIDATE_EMAIL) !== false) {
         $user['email'] = $_POST['email'];
