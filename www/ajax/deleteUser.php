@@ -12,7 +12,7 @@ if (!isset($_SESSION['admin']) || $_SESSION['admin'] === false) {
     die();
 }
 if (isset($_POST['id']) && filter_var($_POST['id'], FILTER_VALIDATE_INT))
-    $aff_row = ProductManagerDelete($_POST['id']);
+    $aff_row = UserManagerDelete($_POST['id']);
 
 header('Location: ../index.php?p=ausers');
 die();
