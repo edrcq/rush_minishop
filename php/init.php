@@ -11,7 +11,7 @@ include_once('conf/db.php');
 
 /* Authorized pages */
 $pages = ['login', 'register', 'logout', 'home', 'products', 'cart', 'myaccount', 'orderplaced'];
-$pages_admin = ['aproducts', 'ausers', 'acat', 'aord'];
+$pages_admin = ['aproducts', 'ausers', 'acat', 'aord', 'addproduct'];
 
 /* Loading procedural Database */
 $managersPath = __DIR__ . '/proceduralDatabase';
