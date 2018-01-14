@@ -42,6 +42,7 @@ foreach ($data['list'] as $id => $item) {
         continue ;
     }
     $total += intval($item['quantity']) * floatval($product['price']);
+    file_put_contents('/tmp/price.d', json_encode([$item, $product]));
     $list[$id] = $item['quantity'];
     $nb += $item['quantity'];
 }
