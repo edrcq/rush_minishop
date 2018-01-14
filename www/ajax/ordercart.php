@@ -47,7 +47,8 @@ foreach ($data['list'] as $id => $item) {
 }
 
 if (count($list) == 0 || $total == 0 || $nb == 0) {
-    $_SESSION['error'] = ['from' => 'cart', 'message' => 'Empty cart... 2'];
+    $msg = count($list) . ' ' . $total . ' ' . $nb;
+    $_SESSION['error'] = ['from' => 'cart', 'message' => $msg];
     header('Location: ../index.php?p=cart');
     die();
 }
