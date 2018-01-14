@@ -10,8 +10,16 @@
 {
 	position: absolute;
 	font-size: 180%;
+	animation: strobe 10s infinite alternate;
+	animation-name: strobe
+	animation-duration: 20s;
 	top: 15px;
 	left: 10px;
+}
+@keyframes strobe
+{
+	0% { color: #FFFFFF; }
+	100% { color: #000000; }
 }
 .top hr
 {

@@ -2,12 +2,12 @@
 {
 	margin: 0;
 	padding: 0;
+	font-family: Futura, Arial;
 }
 .panel
 {
 	color: #FFFFFF;
 	background-color: #FF7700;
-	font-family: Futura, Arial;
 }
 #abtn
 {
@@ -21,11 +21,13 @@
 	border-style: solid;
 	border-color: #000000;
 	border-radius: 0px;
+	color: #000000;
 	background-color: #FF7700;
 	padding-top: 5px;
 	padding-bottom: 5px;
 	padding-left: 10px;
 	padding-right: 10px;
+	text-decoration: none;
 }
 .btn:active
 {
