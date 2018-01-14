@@ -12,7 +12,7 @@ if (isset($_SESSION['error'])) {
 <div class="footercart"> 
     <form action="ajax/ordercart.php" method="POST" id="cartForm">
         <input type="hidden" value="" name="cartData" id="cartData" />
-        <button type="submit" class="btn"  onclick="cleanCart">Order !</button>
+        <button type="submit" class="btn"  onclick="buyCart">Order !</button>
     </form>
-    <button class="btn" onclick="buyCart">Clean cart</button>
+    <button class="btn" onclick="cleanCart">Clean cart</button>
 <div>
