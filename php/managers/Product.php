@@ -1,5 +1,5 @@
 <?php
-    function add($p) {
+    function ProductManagerAdd($p) {
 		global $mysqli;
 
 		$stmt = mysqli_prepare($mysqli, 'INSERT INTO products SET name = ?, color = ?, price = ?, img = ?, stock = ?, description = ?, category = ?, jsondata = ?');
@@ -8,15 +8,16 @@
         return (mysqli_insert_id($mysqli));
     }
 
-    function delete($product) {
+    function ProductManagerDelete($product) {
 		global $mysqli;
 
 		$stmt = mysqli_prepare($mysqli, 'DELETE FROM products WHERE id = ?');
 		mysqli_stmt_bind_param($stmt, 's', $p['id']);
-        return (mysqli_execute($stmt));
+		mysqli_execute($stmt);
+        return (mysqli_affected_rows($mysqli));
     }
 
-    function get($id) {
+    function ProductManagerGet($id) {
 		global $mysqli;
 
         if($id = filter_var($id,FILTER_VALIDATE_INT))
@@ -33,7 +34,7 @@
         return (false);
     }
 
-    function getByColor($col) {
+    function ProductManagerGetByColor($col) {
 		global $mysqli;
 
 		$stmt = mysqli_prepare($mysqli, 'SELECT * FROM products WHERE color = ?');
@@ -45,7 +46,7 @@
 		return ($p);
     }
 
-    function getByCategory($cat) {
+    function ProductManagerGetByCategory($cat) {
 		global $mysqli;
 
 		$stmt = mysqli_prepare($mysqli, 'SELECT * FROM products WHERE color = ?');
@@ -57,7 +58,7 @@
         return ($p);
     }
 
-	function getByName($name) {
+	function ProductManagerGetByName($name) {
 		global $mysqli;
 
 		$stmt = mysqli_prepare($mysqli, 'SELECT * FROM products WHERE name = ?');
@@ -69,7 +70,7 @@
         return ($p);
 	}
 
-    function getAll() {
+    function ProductManagerGetAll() {
 		global $mysqli;
 
 		$stmt = mysqli_prepare($mysqli, 'SELECT * FROM products');
@@ -81,7 +82,7 @@
         return ($p);
     }
 
-	function getFilters($s) {
+	function ProductManagerGetFilters($s) {
 		global $mysqli;
 		$idx = -1;
 		$arr = explode(' ', $s);
@@ -111,7 +112,7 @@
         return ($p);
 	}
 
-	function getSearch($s) {
+	function ProductManagerGetSearch($s) {
 		global $mysqli;
 		$idx = -1;
 		$arr = explode(' ', $s);
@@ -142,7 +143,7 @@
         return ($p);
 	}
 
-	function validArg($s) {
+	function ProductManagerValidArg($s) {
 		global $mysqli;
 		$ret = FALSE;
 
@@ -155,12 +156,12 @@
 		return ($ret);
 	}
 
-    function update($p) {
+    function ProductManagerUpdate($p) {
 		global $mysqli;
 
 		$stmt = mysqli_prepare($mysqli, 'UPDATE product SET name = ?, category = ?, color = ?, description = ?, stock = ?, jsondata = ?, img = ?, price = ? WHERE id = ?');
 		mysqli_stmt_bind_param($stmt, 'ssssssss', $p['name'], $p['category'], $p['color'], $p['description'], $p['stock'], $p['jsondata'], $p['img'], $p['price'], $p['id']);
-        return (mysqli_execute($stmt));
+		mysqli_execute($stmt);
+        return (mysqli_affected_rows($mysqli));
     }
-}
 ?>

@@ -17,10 +17,10 @@
     <?php 
         $products = [];
         if ($cat == 'all') {
-            $products = $ProductManagerGetAll();
+            $products = ProductManagerGetAll();
         }
         else {
-            $products = $ProductManagerGetByCategory($cat);
+            $products = ProductManagerGetByCategory($cat);
         }
     ?>
     <br />
