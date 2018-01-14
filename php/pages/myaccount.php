@@ -7,15 +7,17 @@ if (!$connected) {
 <div class="account">
 	<div class="accmanage">
 		<span class="acctext">My account</span><br />
-			<div class="accform">
-				Email<br />
-				<input type="text" name="email" form="user" placeholder="<?php echo $user['email']?>"></input><br /><br />
-				Password<br />
-				<input type="text" name="password" form="user"></input><br /><br />
-				Role level<br />
-				<?php echo $user['role'];?>
-			</div>
-		<button type="submit" class="btn">Update my informations</button><br />
+			<form action="ajax/updateAcc.php" method="POST">
+				<div class="accform">
+					Email<br />
+					<input type="text" name="email" value="<?php echo $user['email']?>"></input><br /><br />
+					Password<br />
+					<input type="text" name="password"></input><br /><br />
+					Role level<br />
+					<?php echo $user['role'];?>
+				</div>
+			<button type="submit" class="btn">Update my informations</button><br />
+			</form>
 		<button type="submit" class="btn">Delete my account</button>
 	</div>
 		<?php
