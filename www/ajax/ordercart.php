@@ -57,6 +57,7 @@ if (count($list) == 0 || $total == 0 || $nb == 0) {
 $order['list'] = json_encode($list);
 $order['total'] = $total;
 $order['nb'] = $nb;
+$order['uid'] = $_SESSION['user'];
 $order['jsondata'] = '';
 $order['status'] = "Pending confirmation";
 
