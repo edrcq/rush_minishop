@@ -21,11 +21,7 @@
             $products = ProductManagerGetByCategory($cat);
         }
     ?>
-    <?php 
-        if ($isAdmin === true) {
-            echo '<button class="btn" id="abtn">Ajouter un produit</button>';
-        }
-    ?>
+   
     <br />
     <div class="product-list">
         <?php 
