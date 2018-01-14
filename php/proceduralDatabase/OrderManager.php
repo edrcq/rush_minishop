@@ -67,9 +67,10 @@
         $nb = intval($order['nb']);
         $total = floatval($order['total']);
         $id = intval($id);
+        $list = htmlspecialchars_decode($order['list']);
         $stmt = mysqli_prepare($mysqli, 'UPDATE orders SET list = ?, total = ?, nb = ?, jsondata = ?, status = ? WHERE id = ?');
 
-        $bindBool = mysqli_stmt_bind_param($stmt, 'sdissi', $order['list'], $total, $nb, $order['jsondata'], $order['status'], $id);
+        $bindBool = mysqli_stmt_bind_param($stmt, 'sdissi', $list, $total, $nb, $order['jsondata'], $order['status'], $id);
 
         mysqli_stmt_execute($stmt);
 
