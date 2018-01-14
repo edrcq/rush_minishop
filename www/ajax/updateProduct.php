@@ -11,9 +11,9 @@ if (!isset($_SESSION['admin']) || $_SESSION['admin'] === false) {
     header('Location: ../index.php?p=home');
     die();
 }
-
+var_dump($_POST);
 $aff_row = ProductManagerUpdate($_POST);
 
-echo $aff_row;
+var_dump( $aff_row );
 
 ?>
